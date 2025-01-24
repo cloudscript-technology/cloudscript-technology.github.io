@@ -2,20 +2,37 @@ apiVersion: v1
 entries:
   agent-script:
   - apiVersion: v2
-    version: 0.1.0
     appVersion: agent-script-v0.0.16
     created: "2025-01-24T15:57:26.636193-03:00"
     description: A Helm chart for Kubernetes
     digest: 7e206a84a53361ccb200381bfd487f6cf6cd36eab54c31f7ad3975991c7a3bed
-    name: agent-script
-    type: application
-    icon: https://avatars.githubusercontent.com/u/136648497?s=200&v=4
     home: https://cloudscript.com.br
-    urls:
-    - helm-charts/agent-script/agent-script-0.1.0.tgz
-    sources:
-    - https://github.com/cloudscript-technology/helm-charts/tree/main/agent-script
+    icon: https://avatars.githubusercontent.com/u/136648497?s=200&v=4
     maintainers:
     - name: Cloudscript
       url: https://github.com/cloudscript-technology/helm-charts/tree/main/agent-script
-generated: "2025-01-24T18:00:27.191233-03:00"
+    name: agent-script
+    sources:
+    - https://github.com/cloudscript-technology/helm-charts/tree/main/agent-script
+    type: application
+    urls:
+    - helm-charts/agent-script/0.1.0/agent-script-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
+    appVersion: agent-script-v0.0.17
+    created: "2025-01-24T15:57:26.636193-03:00"
+    description: A Helm chart for Kubernetes
+    digest: 7e206a84a53361ccb200381bfd487f6cf6cd36eab54c31f7ad3975991c7a3bed
+    home: https://cloudscript.com.br
+    icon: https://avatars.githubusercontent.com/u/136648497?s=200&v=4
+    maintainers:
+    - name: Cloudscript
+      url: https://github.com/cloudscript-technology/helm-charts/tree/main/agent-script
+    name: agent-script
+    sources:
+    - https://github.com/cloudscript-technology/helm-charts/tree/main/agent-script
+    type: application
+    urls:
+    - helm-charts/agent-script/0.2.0/agent-script-0.2.0.tgz
+    version: 0.2.0
+generated: "2025-01-24T19:01:28.702502-03:00"
