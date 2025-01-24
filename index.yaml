@@ -9,6 +9,6 @@ entries:
     name: agent-script
     type: application
     urls:
-    - charts.cloudscript.com.br/agent-script-0.1.0.tgz
+    - charts.cloudscript.com.br/helm-charts/agent-script/agent-script-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-24T17:07:33.847662-03:00"
+generated: "2025-01-24T17:09:11.61745-03:00"
