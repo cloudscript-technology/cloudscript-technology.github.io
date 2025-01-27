@@ -52,8 +52,10 @@ changes: []
   #     - name: GitHub Issue
   #       url: https://github.com/issue-url
 maintainers:
-  - name: Cloudscript Technology
-    email: contato@cloudscript.com.br
+  - name: Jonathan Schmitt
+    email: jonathan.schmitt@cloudscript.com.br
+  - name: Helias Rodrigues
+    email: helias.rodrigues@cloudscript.com.br
 provider:
   name: Cloudscript Technology
 ignore: []
