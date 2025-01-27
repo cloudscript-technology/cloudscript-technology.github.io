@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   agent-script:
   - apiVersion: v2
-    appVersion: agent-script-v0.0.18
+    appVersion: v0.0.19
     created: "2025-01-27T10:24:26.636193-03:00"
     description: A Helm chart for Kubernetes
     digest: 7e206a84a53361ccb200381bfd487f6cf6cd36eab54c31f7ad3975991c7a3bed
@@ -16,8 +16,8 @@ entries:
     - https://github.com/cloudscript-technology/helm-charts/tree/main/agent-script
     type: application
     urls:
-    - helm-charts/agent-script/0.3.0/agent-script-0.3.0.tgz
-    version: latest
+    - helm-charts/agent-script/0.4.0/agent-script-0.4.0.tgz
+    version: 0.4.0
   - apiVersion: v2
     appVersion: agent-script-v0.0.18
     created: "2025-01-27T10:24:26.636193-03:00"
@@ -69,4 +69,4 @@ entries:
     urls:
     - helm-charts/agent-script/0.1.0/agent-script-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-27T10:25:02.791135-03:00"
+generated: "2025-01-27T11:59:22.036935-03:00"
