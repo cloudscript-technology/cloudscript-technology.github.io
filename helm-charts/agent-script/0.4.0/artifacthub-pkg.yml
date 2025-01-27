@@ -27,6 +27,8 @@ keywords: []
 links:
   - name: Github
     url: https://github.com/cloudscript-technology/helm-charts/tree/main/agent-script
+  - name: Cloudscript
+    url: https://cloudscript.com.br
 readme: https://charts.cloudscript.com.br/agent-script/README.md
 install: |
   ### Adicionando o Repositório
@@ -50,8 +52,8 @@ changes: []
   #     - name: GitHub Issue
   #       url: https://github.com/issue-url
 maintainers:
-  - name: Jonathan Schmitt
-    email: jonathan.schmitt@cloudscript.com.br
+  - name: Cloudscript Technology
+    email: contato@cloudscript.com.br
 provider:
   name: Cloudscript Technology
 ignore: []
