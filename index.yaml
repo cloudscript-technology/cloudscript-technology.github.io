@@ -17,7 +17,7 @@ entries:
     type: application
     urls:
     - helm-charts/agent-script/0.3.0/agent-script-0.3.0.tgz
-    version: 0.2.0
+    version: 0.3.0
   - apiVersion: v2
     appVersion: agent-script-v0.0.17
     created: "2025-01-24T15:57:26.636193-03:00"
