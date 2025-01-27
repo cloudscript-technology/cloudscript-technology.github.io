@@ -5,8 +5,8 @@ category: monitoring-logging
 displayName: AgentScript
 createdAt: "2025-01-27T10:24:50.603888-03:00"
 description: The AgentScript is a tool developed by Cloudscript that acts as an agent within the client's Kubernetes cluster. It collects relevant information to generate personalized alerts and automatically create tickets in the OpsScript platform.
-logoPath: ""
-logoURL: https://charts.cloudscript.com.br/agent-script/cloudscript-logo.png
+logoPath: "../cloudscript-logo.png"
+logoURL: https://charts.cloudscript.com.br/helm-charts/agent-script/cloudscript-logo.png
 digest: 7e206a84a53361ccb200381bfd487f6cf6cd36eab54c31f7ad3975991c7a3bed
 license: ""
 homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/agent-script
