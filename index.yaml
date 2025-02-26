@@ -35,4 +35,4 @@ entries:
     urls:
     - helm-charts/agent-script/0.6.0/agent-script-0.6.0.tgz
     version: 0.6.0
-generated: "2025-01-28T10:03:51.354284-03:00"
+generated: "2025-02-26T11:03:51.354284-03:00"
