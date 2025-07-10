@@ -13,7 +13,7 @@ homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/dumpscr
 appVersion: v1.0.0
 containersImages:
   - name: Dockerhub
-    image: ghcr.io/cloudscript-technology/dumpscript:v0.0.7
+    image: ghcr.io/cloudscript-technology/dumpscript:v0.0.8
     whitelisted: false
     platforms:
       - linux/amd64
