@@ -74,7 +74,7 @@ entries:
     appVersion: v1.0.0
     created: "2025-07-10T10:24:50.603888-03:00"
     description: The DumpScript is an unified system for backup and restore of MySQL and PostgreSQL databases to Amazon S3.
-    digest: 3bd7d3d2e2a077e88965d680b80a5bcf40f562ac7002cebb958232e0379d42f8
+    digest: 47df437dff9932cc2453fb62538fc37ba1f4b9868df56ce5572c8a790ae14b1b
     home: https://cloudscript.com.br
     icon: https://charts.cloudscript.com.br/helm-charts/dumpscript/cloudscript-logo.png
     maintainers:
