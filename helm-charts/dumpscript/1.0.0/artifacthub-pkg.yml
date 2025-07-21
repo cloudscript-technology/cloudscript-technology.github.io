@@ -26,10 +26,10 @@ keywords: []
   # - Using one or more categories names as keywords will improve package visibility
 links:
   - name: Github
-    url: https://github.com/cloudscript-technology/helm-charts/tree/main/agent-script
+    url: https://github.com/cloudscript-technology/helm-charts/tree/main/dumpscript
   - name: Cloudscript
     url: https://cloudscript.com.br
-readme: https://charts.cloudscript.com.br/agent-script/README.md
+readme: https://charts.cloudscript.com.br/dumpscript/README.md
 install: |
   ### Adicionando o Repositório
 
@@ -43,7 +43,7 @@ install: |
 
   Escolha o diretório correspondente à ferramenta desejada e instale o Chart:
   ```bash
-  helm install cloudscript cloudscript/agent-script
+  helm install cloudscript cloudscript/dumpscript
   ```
 changes: []
   # - kind: added # Supported kinds are: added, changed, deprecated, removed, fixed and security

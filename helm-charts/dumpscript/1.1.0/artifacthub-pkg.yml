@@ -7,13 +7,13 @@ createdAt: "2025-07-21T16:23:50.603888-03:00"
 description: The DumpScript is a unified system for backup and restore of MySQL and PostgreSQL databases to Amazon S3.
 logoPath: "../cloudscript-logo.png"
 logoURL: https://charts.cloudscript.com.br/helm-charts/dumpscript/cloudscript-logo.png
-digest: 67774faf5d5edbe79a3b894358dee286c8303920fa40c7999153221b75130adb
+digest: 586749643867844e36987e4f38b25d22f5f631ca7c9253a9fe2adbcd110210d5
 license: ""
 homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/dumpscript
-appVersion: v0.0.15
+appVersion: v0.0.16
 containersImages:
   - name: Dockerhub
-    image: ghcr.io/cloudscript-technology/dumpscript:v0.0.15
+    image: ghcr.io/cloudscript-technology/dumpscript:v0.0.16
     whitelisted: false
     platforms:
       - linux/amd64
@@ -26,10 +26,10 @@ keywords: []
   # - Using one or more categories names as keywords will improve package visibility
 links:
   - name: Github
-    url: https://github.com/cloudscript-technology/helm-charts/tree/main/agent-script
+    url: https://github.com/cloudscript-technology/helm-charts/tree/main/dumpscript
   - name: Cloudscript
     url: https://cloudscript.com.br
-readme: https://charts.cloudscript.com.br/agent-script/README.md
+readme: https://charts.cloudscript.com.br/dumpscript/README.md
 install: |
   ### Adicionando o Repositório
 
@@ -43,7 +43,7 @@ install: |
 
   Escolha o diretório correspondente à ferramenta desejada e instale o Chart:
   ```bash
-  helm install cloudscript cloudscript/agent-script
+  helm install cloudscript cloudscript/dumpscript
   ```
 changes: []
   # - kind: added # Supported kinds are: added, changed, deprecated, removed, fixed and security
