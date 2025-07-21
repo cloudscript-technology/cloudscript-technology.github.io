@@ -88,10 +88,10 @@ entries:
     - helm-charts/dumpscript/1.0.0/dumpscript-1.0.0.tgz
     version: 1.0.0
   - apiVersion: v2
-    appVersion: v0.0.16
+    appVersion: v0.0.17
     created: "2025-07-21T16:23:50.603888-03:00"
     description: The DumpScript is a unified system for backup and restore of MySQL and PostgreSQL databases to Amazon S3.
-    digest: 586749643867844e36987e4f38b25d22f5f631ca7c9253a9fe2adbcd110210d5
+    digest: 7b50376e7f5f8918eb02e933777a1485549b374b8769d6e43d964245043f7ebc
     home: https://cloudscript.com.br
     icon: https://charts.cloudscript.com.br/helm-charts/dumpscript/cloudscript-logo.png
     maintainers:
