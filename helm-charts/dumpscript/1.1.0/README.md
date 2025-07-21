@@ -481,6 +481,46 @@ kubectl logs -f -l app.kubernetes.io/name=dumpscript
 }
 ```
 
+## AWS IAM Policy Requirements
+
+To allow Dumpscript to upload, list, and delete backups in your S3 bucket, the IAM role used by the container must have the following permissions:
+
+- `s3:GetObject` – Read backup files from S3 (for restore)
+- `s3:PutObject` – Upload new backup files to S3
+- `s3:DeleteObject` – Remove old backups from S3 (for retention policy)
+- `s3:ListBucket` – List objects in the S3 bucket (for cleanup and restore)
+- `s3:ListObjects`, `s3:ListObjectsV2` – List objects within a bucket and support recursive listing (required for AWS CLI and scripts that use `aws s3 ls --recursive`)
+
+Below is an example of a minimal IAM policy for S3 access:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject",
+        "s3:ListObjects",
+        "s3:ListObjectsV2"
+      ],
+      "Resource": "arn:aws:s3:::your-bucket-name/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": "arn:aws:s3:::your-bucket-name"
+    }
+  ]
+}
+```
+
+Replace `your-bucket-name` with the actual name of your S3 bucket. Granting only these permissions ensures the tool can perform all backup, restore, and cleanup operations securely.
+
 Generate new digest:
 ```bash
 shasum -a 256 dumpscript-<version>.tgz
