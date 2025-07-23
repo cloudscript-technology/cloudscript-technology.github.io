@@ -1,0 +1,69 @@
+version: 1.2.0
+name: dumpscript
+alternativeName: ""
+category: backup
+displayName: DumpScript
+createdAt: "2025-07-21T16:23:50.603888-03:00"
+description: The DumpScript is a unified system for backup and restore of MySQL and PostgreSQL databases to Amazon S3.
+logoPath: "../cloudscript-logo.png"
+logoURL: https://charts.cloudscript.com.br/helm-charts/dumpscript/cloudscript-logo.png
+digest: b445f438bee59c40381715994701486ce0b7d7060edbcf3213bbac2117623707
+license: ""
+homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/dumpscript
+appVersion: v0.0.20
+containersImages:
+  - name: Dockerhub
+    image: ghcr.io/cloudscript-technology/dumpscript:v0.0.20
+    whitelisted: false
+    platforms:
+      - linux/amd64
+containsSecurityUpdates: false
+operator: false
+deprecated: false
+prerelease: false
+keywords: []
+  # - A list of keywords about this package
+  # - Using one or more categories names as keywords will improve package visibility
+links:
+  - name: Github
+    url: https://github.com/cloudscript-technology/helm-charts/tree/main/dumpscript
+  - name: Cloudscript
+    url: https://cloudscript.com.br
+readme: https://charts.cloudscript.com.br/dumpscript/README.md
+install: |
+  ### Adicionando o Repositório
+
+  Adicione o repositório de Helm Charts da Cloudscript ao seu ambiente local:
+  ```bash
+  helm repo add cloudscript https://charts.cloudscript.com.br
+  helm repo update
+  ```
+
+  ### Instalando um Chart
+
+  Escolha o diretório correspondente à ferramenta desejada e instale o Chart:
+  ```bash
+  helm install cloudscript cloudscript/dumpscript
+  ```
+changes: []
+  # - kind: added # Supported kinds are: added, changed, deprecated, removed, fixed and security
+  #   description: cool feature
+  #   links:
+  #     - name: GitHub Issue
+  #       url: https://github.com/issue-url
+maintainers:
+  - name: Jonathan Schmitt
+    email: jonathan.schmitt@cloudscript.com.br
+  - name: Helias Rodrigues
+    email: helias.rodrigues@cloudscript.com.br
+provider:
+  name: Cloudscript Technology
+ignore: []
+  # - lib
+recommendations: []
+  # - url: https://artifacthub.io/packages/helm/artifact-hub/artifact-hub
+screenshots: []
+  # - title: Sample screenshot 1
+  #   url: https://example.com/screenshot1.jpg
+annotations: []
+  # key1: value1
