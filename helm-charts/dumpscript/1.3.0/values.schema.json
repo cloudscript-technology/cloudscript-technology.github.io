@@ -1,0 +1,387 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/$defs/helm-values",
+    "$defs": {
+        "helm-values": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "databases": {
+                    "$ref": "#/$defs/helm-values.databases"
+                },
+                "image": {
+                    "$ref": "#/$defs/helm-values.image"
+                },
+                "imagePullSecrets": {
+                    "$ref": "#/$defs/helm-values.imagePullSecrets"
+                },
+                "nameOverride": {
+                    "$ref": "#/$defs/helm-values.nameOverride"
+                },
+                "fullnameOverride": {
+                    "$ref": "#/$defs/helm-values.fullnameOverride"
+                },
+                "serviceAccount": {
+                    "$ref": "#/$defs/helm-values.serviceAccount"
+                },
+                "podAnnotations": {
+                    "$ref": "#/$defs/helm-values.podAnnotations"
+                },
+                "podLabels": {
+                    "$ref": "#/$defs/helm-values.podLabels"
+                },
+                "podSecurityContext": {
+                    "$ref": "#/$defs/helm-values.podSecurityContext"
+                },
+                "securityContext": {
+                    "$ref": "#/$defs/helm-values.securityContext"
+                },
+                "resources": {
+                    "$ref": "#/$defs/helm-values.resources"
+                },
+                "nodeSelector": {
+                    "$ref": "#/$defs/helm-values.nodeSelector"
+                },
+                "tolerations": {
+                    "$ref": "#/$defs/helm-values.tolerations"
+                },
+                "affinity": {
+                    "$ref": "#/$defs/helm-values.affinity"
+                },
+                "global": {
+                    "$ref": "#/$defs/helm-values.global"
+                },
+                "notifications": {
+                    "$ref": "#/$defs/helm-values.notifications"
+                }
+            }
+        },
+        "helm-values.databases": {
+            "type": "array",
+            "description": "Databases to backup",
+            "default": [],
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "type": {
+                        "$ref": "#/$defs/helm-values.databases.type"
+                    },
+                    "version": {
+                        "$ref": "#/$defs/helm-values.databases.version"
+                    },
+                    "connectionInfo": {
+                        "$ref": "#/$defs/helm-values.databases.connectionInfo"
+                    },
+                    "aws": {
+                        "$ref": "#/$defs/helm-values.databases.aws"
+                    },
+                    "schedule": {
+                        "$ref": "#/$defs/helm-values.databases.schedule"
+                    },
+                    "extraArgs": {
+                        "$ref": "#/$defs/helm-values.databases.extraArgs"
+                    },
+                    "periodicity": {
+                        "$ref": "#/$defs/helm-values.databases.periodicity"
+                    },
+                    "retentionDays": {
+                        "$ref": "#/$defs/helm-values.databases.retentionDays"
+                    }
+                }
+            }
+        },
+        "helm-values.image": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "repository": {
+                    "$ref": "#/$defs/helm-values.image.repository"
+                },
+                "pullPolicy": {
+                    "$ref": "#/$defs/helm-values.image.pullPolicy"
+                },
+                "tag": {
+                    "$ref": "#/$defs/helm-values.image.tag"
+                }
+            }
+        },
+        "helm-values.image.repository": {
+            "type": "string",
+            "description": "Image repository",
+            "default": "ghcr.io/cloudscript-technology/dumpscript"
+        },
+        "helm-values.image.pullPolicy": {
+            "type": "string",
+            "description": "Image pull policy",
+            "default": "IfNotPresent"
+        },
+        "helm-values.image.tag": {
+            "type": "string",
+            "description": "Image tag. The default is the chart appVersion",
+            "default": ""
+        },
+        "helm-values.imagePullSecrets": {
+            "type": "array",
+            "description": "Secrets for image pull",
+            "default": [],
+            "items": {
+                "type": "string"
+            }
+        },
+        "helm-values.nameOverride": {
+            "type": "string",
+            "description": "Override the chart name",
+            "default": ""
+        },
+        "helm-values.fullnameOverride": {
+            "type": "string",
+            "description": "Override the full chart name",
+            "default": ""
+        },
+        "helm-values.serviceAccount": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "create": {
+                    "$ref": "#/$defs/helm-values.serviceAccount.create"
+                },
+                "automount": {
+                    "$ref": "#/$defs/helm-values.serviceAccount.automount"
+                },
+                "annotations": {
+                    "$ref": "#/$defs/helm-values.serviceAccount.annotations"
+                },
+                "name": {
+                    "$ref": "#/$defs/helm-values.serviceAccount.name"
+                },
+                "namespace": {
+                    "$ref": "#/$defs/helm-values.serviceAccount.namespace"
+                }
+            }
+        },
+        "helm-values.serviceAccount.create": {
+            "type": "boolean",
+            "description": "Create a service account",
+            "default": true
+        },
+        "helm-values.serviceAccount.automount": {
+            "type": "boolean",
+            "description": "Automount the service account token",
+            "default": true
+        },
+        "helm-values.serviceAccount.annotations": {
+            "type": "object",
+            "description": "Annotations for the service account",
+            "default": {}
+        },
+        "helm-values.serviceAccount.name": {
+            "type": "string",
+            "description": "Service account name",
+            "default": ""
+        },
+        "helm-values.serviceAccount.namespace": {
+            "type": "string",
+            "description": "Namespace for the service account. Required if create=true",
+            "default": ""
+        },
+        "helm-values.podAnnotations": {
+            "type": "object",
+            "description": "Annotations for the pod",
+            "default": {}
+        },
+        "helm-values.podLabels": {
+            "type": "object",
+            "description": "Labels for the pod",
+            "default": {}
+        },
+        "helm-values.podSecurityContext": {
+            "type": "object",
+            "description": "Security context for the pod",
+            "default": {}
+        },
+        "helm-values.securityContext": {
+            "type": "object",
+            "description": "Security context for the container",
+            "default": {}
+        },
+        "helm-values.resources": {
+            "type": "object",
+            "description": "Resource requests and limits for the container",
+            "default": {}
+        },
+        "helm-values.nodeSelector": {
+            "type": "object",
+            "description": "Node selector for the pod",
+            "default": {}
+        },
+        "helm-values.tolerations": {
+            "type": "array",
+            "description": "Tolerations for the pod",
+            "default": [],
+            "items": {}
+        },
+        "helm-values.affinity": {
+            "type": "object",
+            "description": "Affinity rules for the pod",
+            "default": {}
+        },
+        "helm-values.global": {
+            "type": "object",
+            "description": "Global values for the chart",
+            "default": {}
+        },
+        "helm-values.databases.type": {
+            "type": "string",
+            "description": "Database type",
+            "enum": [
+                "postgresql",
+                "mysql"
+            ]
+        },
+        "helm-values.databases.version": {
+            "type": "string",
+            "description": "Database client version",
+            "default": ""
+        },
+        "helm-values.databases.connectionInfo": {
+            "type": "object",
+            "description": "Database connection information",
+            "additionalProperties": false,
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "Database host"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Database username"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Database password"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "Database name"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Database port"
+                },
+                "secretName": {
+                    "type": "string",
+                    "description": "Name of the secret containing the connection information"
+                }
+            }
+        },
+        "helm-values.databases.aws": {
+            "type": "object",
+            "description": "AWS settings for the backup",
+            "additionalProperties": false,
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "AWS region for the S3 bucket"
+                },
+                "bucket": {
+                    "type": "string",
+                    "description": "AWS bucket to store the database dump"
+                },
+                "bucketPrefix": {
+                    "type": "string",
+                    "description": "Prefix for the database dump in the S3 bucket"
+                },
+                "secretName": {
+                    "type": "string",
+                    "description": "Name of the secret containing the AWS credentials"
+                }
+            }
+        },
+        "helm-values.databases.schedule": {
+            "type": "string",
+            "description": "Schedule for the database dump (cron format)"
+        },
+        "helm-values.databases.extraArgs": {
+            "type": "string",
+            "description": "Extra arguments for the database dump"
+        },
+        "helm-values.databases.periodicity": {
+            "type": "array",
+            "description": "Backup periodicity configurations for the database dump",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Periodicity type",
+                        "enum": [
+                            "daily",
+                            "weekly",
+                            "monthly",
+                            "yearly"
+                        ]
+                    },
+                    "retentionDays": {
+                        "type": "integer",
+                        "description": "Retention period in days for this periodicity type"
+                    },
+                    "schedule": {
+                        "type": "string",
+                        "description": "Schedule for this periodicity type (cron format)"
+                    }
+                },
+                "required": [
+                    "type",
+                    "retentionDays",
+                    "schedule"
+                ]
+            }
+        },
+        "helm-values.databases.retentionDays": {
+            "type": "integer",
+            "description": "Retention period in days",
+            "default": 0
+        },
+        "helm-values.notifications": {
+            "type": "object",
+            "description": "Notifications settings",
+            "additionalProperties": false,
+            "properties": {
+                "slack": {
+                    "$ref": "#/$defs/helm-values.notifications.slack"
+                }
+            }
+        },
+        "helm-values.notifications.slack": {
+            "type": "object",
+            "description": "Slack notifications settings",
+            "additionalProperties": false,
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable Slack notifications",
+                    "default": false
+                },
+                "webhookUrl": {
+                    "type": "string",
+                    "description": "Slack webhook URL"
+                },
+                "channel": {
+                    "type": "string",
+                    "description": "Slack channel"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Slack username"
+                },
+                "notifyOnSuccess": {
+                    "type": "boolean",
+                    "description": "Notify on success",
+                    "default": false
+                }
+            }
+        }
+    }
+}
