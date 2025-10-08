@@ -7,7 +7,7 @@ createdAt: "2025-10-08T10:03:50.603888-03:00"
 description: The DumpScript is a unified system for backup and restore of MySQL and PostgreSQL databases to Amazon S3.
 logoPath: "../cloudscript-logo.png"
 logoURL: https://charts.cloudscript.com.br/helm-charts/dumpscript/cloudscript-logo.png
-digest: 1cc6db8b5f12724ab87427c82de3d66a16cd8a27c509774e93759ed877e63911
+digest: 4b717fb7d72ee3b3eb32d0f4d10bf8e89787a112d4d98fde3d59b33d94ba3430
 license: ""
 homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/dumpscript
 appVersion: v0.0.34-alpine-3-21
