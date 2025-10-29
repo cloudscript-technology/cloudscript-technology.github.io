@@ -143,7 +143,7 @@
           "properties": {
             "path": {
               "type": "string",
-              "default": ""
+              "default": "/app/data/k8s_monitoring.db"
             }
           }
         },
@@ -381,7 +381,7 @@
         },
         "mountPath": {
           "type": "string",
-          "default": "/data"
+          "default": "/app/data"
         },
         "subPath": {
           "type": "string",

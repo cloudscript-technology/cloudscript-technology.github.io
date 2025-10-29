@@ -7,13 +7,13 @@ createdAt: "2025-10-29T10:24:50.603888-03:00"
 description: The K8s Monitoring App is a unified system for monitoring and alerting of Kubernetes clusters.
 logoPath: "../cloudscript-logo.png"
 logoURL: https://charts.cloudscript.com.br/helm-charts/k8s-monitoring-app/cloudscript-logo.png
-digest: bf7ca432b60c96df404929f192b16a7783ac8cdb061385cce15c933c093c82a1
+digest: db928b4104e8dbe8428407db4408d10e56713b6275bef0ae3e8f87778b750d9e
 license: ""
 homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/k8s-monitoring-app
-appVersion: v0.0.5
+appVersion: v0.0.7
 containersImages:
   - name: Dockerhub
-    image: ghcr.io/cloudscript-technology/k8s-monitoring-app:v0.0.5
+    image: ghcr.io/cloudscript-technology/k8s-monitoring-app:v0.0.7
     whitelisted: false
     platforms:
       - linux/amd64
