@@ -279,7 +279,7 @@ entries:
     appVersion: v0.0.4
     created: "2025-10-29T10:24:50.603888-03:00"
     description: The K8s Monitoring App is a unified system for monitoring and alerting of Kubernetes clusters.
-    digest: 4fc6addc5a84a5507d54bee5476bb431cf6ae11e290a0a0ebd8f15aaa7e6d6c3
+    digest: 64fb2445054eeac9cf64429dc953adda1c27a09be30ed1e46d010da63de09a87
     home: https://cloudscript.com.br
     icon: https://charts.cloudscript.com.br/helm-charts/k8s-monitoring-app/cloudscript-logo.png
     maintainers:
