@@ -1,0 +1,53 @@
+apiVersion: v1
+entries:
+  deploy-apps:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Initial release with multi-application deployment support
+        - kind: added
+          description: Support for Deployment, StatefulSet, CronJob, and Job workload types
+        - kind: added
+          description: External Secrets Operator integration for secure secret management
+        - kind: added
+          description: Flexible RBAC configuration (global and per-app)
+        - kind: added
+          description: Comprehensive probe configuration (liveness, readiness, startup)
+        - kind: added
+          description: Ingress and Service configuration per application
+      artifacthub.io/displayName: Deploy Apps
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Cloudscript
+          url: https://cloudscript.com.br
+        - name: Documentation
+          url: https://github.com/cloudscript-technology/helm-charts/tree/main/deploy-apps
+      artifacthub.io/provider: Cloudscript
+    apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-01-13T21:58:18.108187736Z"
+    description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
+      StatefulSet, CronJob, Job) com suporte a External Secrets
+    digest: b6cc7185d8925557cb428ca1cc195d7f1bf0e62da6a0e896a52316a55c78290e
+    home: https://cloudscript.com.br
+    icon: https://charts.cloudscript.com.br/helm-charts/deploy-apps/icon.png
+    keywords:
+    - kubernetes
+    - helm
+    - multi-app
+    - deployment
+    - statefulset
+    - cronjob
+    - job
+    - external-secrets
+    - cloudscript
+    kubeVersion: '>= 1.27.0-0'
+    maintainers:
+    - email: jonathan.schmitt@cloudscript.com.br
+      name: Jonathan Schmitt
+    name: deploy-apps
+    type: application
+    urls:
+    - https://cloudscript-technology.github.io/helm-charts/deploy-apps-0.1.0.tgz
+    version: 0.1.0
+generated: "2026-01-13T21:58:18.107185282Z"
