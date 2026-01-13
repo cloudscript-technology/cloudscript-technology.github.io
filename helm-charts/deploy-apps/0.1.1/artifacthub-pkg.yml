@@ -1,0 +1,25 @@
+version: 0.1.1
+name: deploy-apps
+displayName: deploy-apps
+createdAt: 2026-01-13T22:15:16Z
+description: Helm chart flexível para deploy de múltiplas aplicações (Deployment, StatefulSet, CronJob, Job) com suporte a External Secrets
+digest: 2725ebdf6dbfbec8b6b7390e2286d79882d549a89bdcfef7a4125f7abf6ba957
+license: Apache-2.0
+homeURL: https://cloudscript.com.br
+appVersion: 0.1.1
+containsSecurityUpdates: false
+operator: false
+deprecated: false
+prerelease: false
+keywords:
+  - kubernetes
+  - helm
+  - cloudscript
+maintainers:
+  - name: Jonathan Schmitt
+    email: jonathan.schmitt@cloudscript.com.br
+links:
+  - name: Chart Repository
+    url: https://github.com/cloudscript-technology/helm-charts
+  - name: Cloudscript
+    url: https://cloudscript.com.br
