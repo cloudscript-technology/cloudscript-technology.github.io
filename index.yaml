@@ -309,4 +309,22 @@ entries:
     urls:
     - helm-charts/k8s-monitoring-app/1.0.0/k8s-monitoring-app-1.0.0.tgz
     version: 1.0.0
+  deploy-apps:
+  - apiVersion: v2
+    appVersion: v0.1.0
+    created: "2026-01-13T18:00:00.603888-03:00"
+    description: Helm chart flexível para deploy de múltiplas aplicações (Deployment, StatefulSet, CronJob, Job) com suporte a External Secrets Operator.
+    digest: e041e839b067c5410376be886e610f20e758b5aff5089495729dd5e6921cdfd4
+    home: https://cloudscript.com.br
+    icon: https://charts.cloudscript.com.br/helm-charts/deploy-apps/cloudscript-logo.png
+    maintainers:
+    - name: Cloudscript
+      url: https://github.com/cloudscript-technology/helm-charts/tree/main/deploy-apps
+    name: deploy-apps
+    sources:
+    - https://github.com/cloudscript-technology/helm-charts/tree/main/deploy-apps
+    type: application
+    urls:
+    - helm-charts/deploy-apps/0.1.0/deploy-apps-0.1.0.tgz
+    version: 1.0.0
 generated: "2025-02-26T12:13:00.354284-03:00"
