@@ -87,7 +87,7 @@ entries:
     type: application
     urls:
     - helm-charts/deploy-apps/0.1.0/deploy-apps-0.1.0.tgz
-    version: 1.0.0
+    version: 0.1.0
   dumpscript:
   - apiVersion: v2
     appVersion: v0.0.36-alpine-3-21
