@@ -205,55 +205,6 @@ entries:
           url: https://github.com/cloudscript-technology/helm-charts/tree/main/deploy-apps
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
-    appVersion: 0.1.1
-    created: "2026-01-13T22:20:58.270941245Z"
-    description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
-      StatefulSet, CronJob, Job) com suporte a External Secrets
-    digest: a3346e25a88c562031a6993522d5aecd6adc0fe770665ec7107efd8ff0d6b7a4
-    home: https://cloudscript.com.br
-    icon: https://charts.cloudscript.com.br/helm-charts/deploy-apps/icon.png
-    keywords:
-    - kubernetes
-    - helm
-    - multi-app
-    - deployment
-    - statefulset
-    - cronjob
-    - job
-    - external-secrets
-    - cloudscript
-    kubeVersion: '>= 1.27.0-0'
-    maintainers:
-    - email: jonathan.schmitt@cloudscript.com.br
-      name: Jonathan Schmitt
-    name: deploy-apps
-    type: application
-    urls:
-    - helm-charts/https://cloudscript-technology.github.io/deploy-apps/0.1.1/https://cloudscript-technology.github.io/deploy-apps-0.1.1.tgz
-    version: 0.1.1
-  - annotations:
-      artifacthub.io/changes: |
-        - kind: added
-          description: Initial release with multi-application deployment support
-        - kind: added
-          description: Support for Deployment, StatefulSet, CronJob, and Job workload types
-        - kind: added
-          description: External Secrets Operator integration for secure secret management
-        - kind: added
-          description: Flexible RBAC configuration (global and per-app)
-        - kind: added
-          description: Comprehensive probe configuration (liveness, readiness, startup)
-        - kind: added
-          description: Ingress and Service configuration per application
-      artifacthub.io/displayName: Deploy Apps
-      artifacthub.io/license: Apache-2.0
-      artifacthub.io/links: |
-        - name: Cloudscript
-          url: https://cloudscript.com.br
-        - name: Documentation
-          url: https://github.com/cloudscript-technology/helm-charts/tree/main/deploy-apps
-      artifacthub.io/provider: Cloudscript
-    apiVersion: v2
     appVersion: 1.0.0
     created: "2026-01-13T22:20:58.270174937Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
