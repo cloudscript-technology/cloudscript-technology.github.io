@@ -5,6 +5,7 @@ createdAt: 2026-01-13T22:28:39Z
 description: Helm chart flexível para deploy de múltiplas aplicações (Deployment, StatefulSet, CronJob, Job) com suporte a External Secrets
 digest: afb2b27f0262cf66e5bcc8bdc459018aa27d7eda6f43be8464d71a0b470ab607
 license: Apache-2.0
+logoURL: https://charts.cloudscript.com.br/helm-charts/deploy-apps/cloudscript-logo.png
 homeURL: https://cloudscript.com.br
 appVersion: 0.1.1
 containsSecurityUpdates: false
