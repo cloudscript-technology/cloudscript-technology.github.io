@@ -211,7 +211,7 @@ entries:
       StatefulSet, CronJob, Job) com suporte a External Secrets
     digest: 06696a2e00aedcf76a1480dee57fbfce0cc0f816d22e20817e9c8132a397a39b
     home: https://cloudscript.com.br
-    icon: https://charts.cloudscript.com.br/helm-charts/deploy-apps/icon.png
+    icon: https://charts.cloudscript.com.br/helm-charts/deploy-apps/cloudscript-logo.png
     keywords:
     - kubernetes
     - helm
@@ -260,7 +260,7 @@ entries:
       StatefulSet, CronJob, Job) com suporte a External Secrets
     digest: afb2b27f0262cf66e5bcc8bdc459018aa27d7eda6f43be8464d71a0b470ab607
     home: https://cloudscript.com.br
-    icon: https://charts.cloudscript.com.br/helm-charts/deploy-apps/icon.png
+    icon: https://charts.cloudscript.com.br/helm-charts/deploy-apps/cloudscript-logo.png
     keywords:
     - kubernetes
     - helm
@@ -309,7 +309,7 @@ entries:
       StatefulSet, CronJob, Job) com suporte a External Secrets
     digest: e041e839b067c5410376be886e610f20e758b5aff5089495729dd5e6921cdfd4
     home: https://cloudscript.com.br
-    icon: https://charts.cloudscript.com.br/helm-charts/deploy-apps/icon.png
+    icon: https://charts.cloudscript.com.br/helm-charts/deploy-apps/cloudscript-logo.png
     keywords:
     - kubernetes
     - helm
