@@ -1,0 +1,240 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "image": {
+      "type": "object",
+      "properties": {
+        "repository": { "type": "string" },
+        "pullPolicy": { "type": "string" },
+        "tag": { "type": "string" }
+      }
+    },
+    "imagePullSecrets": {
+      "type": "array"
+    },
+    "nameOverride": { "type": "string" },
+    "fullnameOverride": { "type": "string" },
+    "serviceAccount": {
+      "type": "object",
+      "properties": {
+        "create": { "type": "boolean" },
+        "automount": { "type": "boolean" },
+        "annotations": { "type": "object" },
+        "name": { "type": "string" },
+        "namespace": { "type": "string" }
+      }
+    },
+    "rbac": {
+      "type": "object",
+      "properties": {
+        "create": { "type": "boolean" },
+        "rules": { "type": "array" },
+        "useClusterRole": { "type": "boolean" }
+      }
+    },
+    "gatewayApi": {
+      "type": "object",
+      "description": "Global Gateway API defaults",
+      "properties": {
+        "gatewayClassName": { "type": "string" },
+        "clusterIssuer": { "type": "string" }
+      }
+    },
+    "global": {
+      "type": "object"
+    },
+    "apps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "enabled", "type"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "enabled": { "type": "boolean" },
+          "type": {
+            "type": "string",
+            "enum": ["deployment", "statefulset", "cronjob", "job"]
+          },
+          "annotations": {
+            "type": "object",
+            "description": "Annotations to add to the resource metadata (e.g. ArgoCD hooks for Jobs)",
+            "additionalProperties": { "type": "string" }
+          },
+          "strategy": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["RollingUpdate", "Recreate"]
+              },
+              "rollingUpdate": {
+                "type": "object",
+                "properties": {
+                  "maxSurge": {
+                    "oneOf": [
+                      { "type": "string" },
+                      { "type": "integer" }
+                    ]
+                  },
+                  "maxUnavailable": {
+                    "oneOf": [
+                      { "type": "string" },
+                      { "type": "integer" }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "terminationGracePeriodSeconds": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "priorityClassName": {
+            "type": "string"
+          },
+          "topologySpreadConstraints": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "lifecycle": {
+            "type": "object",
+            "properties": {
+              "preStop": {
+                "type": "object"
+              },
+              "postStart": {
+                "type": "object"
+              }
+            }
+          },
+          "kedaScaling": {
+            "type": "object",
+            "description": "KEDA ScaledObject configuration for event-driven autoscaling",
+            "properties": {
+              "enabled": { "type": "boolean" },
+              "minReplicas": { "type": "integer", "minimum": 0 },
+              "maxReplicas": { "type": "integer", "minimum": 1 },
+              "pollingInterval": { "type": "integer", "minimum": 1 },
+              "cooldownPeriod": { "type": "integer", "minimum": 0 },
+              "idleReplicaCount": { "type": "integer", "minimum": 0 },
+              "fallback": { "type": "object" },
+              "advanced": {
+                "type": "object",
+                "properties": {
+                  "restoreToOriginalReplicaCount": { "type": "boolean" },
+                  "horizontalPodAutoscalerConfig": { "type": "object" }
+                }
+              },
+              "triggerAuthentication": {
+                "type": "object",
+                "description": "TriggerAuthentication for secure access to triggers",
+                "properties": {
+                  "enabled": { "type": "boolean" },
+                  "podIdentity": {
+                    "type": "object",
+                    "properties": {
+                      "provider": { "type": "string", "enum": ["aws", "azure", "gcp", "aws-eks", "azure-workload", "none"] },
+                      "identityAuthorityHost": { "type": "string" },
+                      "identityId": { "type": "string" }
+                    }
+                  },
+                  "secretTargetRef": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "parameter": { "type": "string" },
+                        "name": { "type": "string" },
+                        "key": { "type": "string" }
+                      },
+                      "required": ["parameter", "name", "key"]
+                    }
+                  },
+                  "env": { "type": "array" },
+                  "hashiCorpVault": { "type": "object" },
+                  "azureKeyVault": { "type": "object" },
+                  "awsSecretManager": { "type": "object" },
+                  "gcpSecretManager": { "type": "object" }
+                }
+              },
+              "triggers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["type", "metadata"],
+                  "properties": {
+                    "type": { "type": "string" },
+                    "metricType": { "type": "string", "enum": ["AverageValue", "Value", "Utilization"] },
+                    "metadata": { "type": "object" },
+                    "useAuth": { "type": "boolean", "description": "Auto-inject authenticationRef from triggerAuthentication" },
+                    "authenticationRef": {
+                      "type": "object",
+                      "properties": {
+                        "name": { "type": "string" },
+                        "kind": { "type": "string", "enum": ["TriggerAuthentication", "ClusterTriggerAuthentication"] }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "gatewayApi": {
+            "type": "object",
+            "description": "Gateway API (Envoy) configuration",
+            "properties": {
+              "enabled": { "type": "boolean" },
+              "gatewayClassName": { "type": "string" },
+              "clusterIssuer": { "type": "string" },
+              "gateway": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "listeners": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": { "type": "string" },
+                        "hostname": { "type": "string" },
+                        "secretName": { "type": "string" },
+                        "port": { "type": "integer" }
+                      }
+                    }
+                  }
+                }
+              },
+              "gatewayRef": {
+                "type": "object",
+                "description": "Reference to existing Gateway (when not creating one)",
+                "properties": {
+                  "name": { "type": "string" },
+                  "namespace": { "type": "string" }
+                }
+              },
+              "httpRoutes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "listenerName": { "type": "string" },
+                    "hostnames": { "type": "array", "items": { "type": "string" } },
+                    "rules": { "type": "array" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
