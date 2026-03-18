@@ -1,0 +1,42 @@
+version: 0.1.11
+name: deploy-apps
+displayName: deploy-apps
+createdAt: 2026-03-18T19:28:24Z
+description: Helm chart flexível para deploy de múltiplas aplicações (Deployment, StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
+logoPath: ../cloudscript-logo.png
+logoURL: https://charts.cloudscript.com.br/helm-charts/deploy-apps/cloudscript-logo.png
+digest: 297639e32d3605d438d592443bd58e63c4f4fe35ad415e0abe12e43a79f8f2ca
+license: Apache-2.0
+homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/deploy-apps
+appVersion: 0.1.11
+containsSecurityUpdates: false
+operator: false
+deprecated: false
+prerelease: false
+keywords:
+  - kubernetes
+  - helm
+  - cloudscript
+maintainers:
+  - name: Jonathan Schmitt
+    email: jonathan.schmitt@cloudscript.com.br
+links:
+  - name: Github
+    url: https://github.com/cloudscript-technology/helm-charts/tree/main/deploy-apps
+  - name: Cloudscript
+    url: https://cloudscript.com.br
+install: |
+  ### Adicionando o Repositório
+
+  Adicione o repositório de Helm Charts da Cloudscript ao seu ambiente local:
+  ```bash
+  helm repo add cloudscript https://charts.cloudscript.com.br
+  helm repo update
+  ```
+
+  ### Instalando um Chart
+
+  Escolha o diretório correspondente à ferramenta desejada e instale o Chart:
+  ```bash
+  helm install my-release cloudscript/deploy-apps
+  ```
