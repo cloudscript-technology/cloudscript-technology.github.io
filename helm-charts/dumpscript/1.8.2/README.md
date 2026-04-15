@@ -1,0 +1,1112 @@
+# Dumpscript Helm Chart
+
+A Helm Chart for automating PostgreSQL, MySQL/MariaDB and MongoDB database backups on Kubernetes, with automatic upload to S3-compatible storage (AWS S3, MinIO, DigitalOcean Spaces) or Azure Blob Storage.
+
+## Description
+
+**Dumpscript** is a complete solution for automated database backups in Kubernetes environments. It creates independent CronJobs for each configured database, performing regular dumps and uploading them to S3-compatible storage or Azure Blob Storage.
+
+## Features
+
+- ✅ **Multiple databases**: Support for PostgreSQL, MySQL/MariaDB and MongoDB
+- ✅ **Runtime configurable client versions**: No need to rebuild images
+- ✅ **Multiple backup schedules**: Support for daily, weekly, monthly, and yearly backups per database
+- ✅ **Independent jobs**: Each database runs in a separate CronJob
+- ✅ **Multiple storage backends**: Native support for S3-compatible storage (AWS S3, MinIO, DigitalOcean Spaces) and Azure Blob Storage
+- ✅ **Flexible authentication**: Support for Kubernetes secrets or direct values
+- ✅ **Custom scheduling**: Individual cron expressions per backup type
+- ✅ **Custom arguments**: Database-specific dump options
+- ✅ **AWS IAM Roles**: Support for roles for authentication
+- ✅ **Security**: Credentials protected via Kubernetes Secrets
+- ✅ **Slack notifications**: Optional notifications for backup status
+- ✅ **Alpine base image**: Containerized execution on Alpine Linux
+
+## Installation
+
+### Prerequisites
+
+- Kubernetes 1.16+
+- Helm 3.0+
+- Access to Object Storage
+
+### Install the Chart
+
+```bash
+# Add the repository (if applicable)
+helm repo add cloudscript https://charts.cloudscript.technology
+helm repo update
+
+# Install the chart
+helm install dumpscript cloudscript/dumpscript -f values.yaml
+```
+
+## Configuration
+
+### Example values.yaml
+
+```yaml
+# Image configuration
+image:
+  repository: ghcr.io/cloudscript-technology/dumpscript
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+# Database configuration
+databases:
+  # PostgreSQL with direct credentials
+  - type: postgresql
+    version: "17"  # PostgreSQL client version
+    periodicity:
+      - type: daily
+        retentionDays: 7
+        schedule: "0 2 * * *"  # Every day at 2:00 AM
+      - type: weekly
+        retentionDays: 30
+        schedule: "0 3 * * 0"  # Every Sunday at 3:00 AM
+      - type: monthly
+        retentionDays: 365
+        schedule: "0 4 1 * *"  # First day of month at 4:00 AM
+    connectionInfo:
+      host: "postgres.example.com"
+      username: "backup_user"
+      password: "secret_password"
+      database: "app_db"
+      port: 5432
+    objectStorage:
+      region: "us-west-2"
+      bucket: "my-company-backups"
+      bucketPrefix: "postgres-dumps/"
+    extraArgs: "--verbose --single-transaction"
+    # Volume configuration for temporary storage
+    extraVolumes:
+      - name: temp-data
+        emptyDir:
+          sizeLimit: 20Gi
+    extraVolumeMounts:
+      - name: temp-data
+        mountPath: /dumpscript
+        readOnly: false
+
+  # MariaDB with secrets (S3 backend)
+  - type: mariadb
+    version: "11.4"  # MariaDB client version
+    periodicity:
+      - type: daily
+        retentionDays: 7
+        schedule: "0 1 * * *"  # Every day at 1:00 AM
+      - type: weekly
+        retentionDays: 30
+        schedule: "0 2 * * 0"  # Every Sunday at 2:00 AM
+    connectionInfo:
+      secretName: "mariadb-credentials"
+    objectStorage:
+      secretName: "s3-credentials"
+    extraArgs: "--opt --single-transaction"
+    # Volume configuration for temporary storage
+    extraVolumes:
+      - name: temp-data
+        emptyDir:
+          sizeLimit: 15Gi
+    extraVolumeMounts:
+      - name: temp-data
+        mountPath: /dumpscript
+        readOnly: false
+
+  # MySQL with Azure Blob Storage backend
+  - type: mysql
+    version: "8.0"
+    periodicity:
+      - type: daily
+        retentionDays: 7
+        schedule: "0 3 * * *"  # Every day at 3:00 AM
+    connectionInfo:
+      host: "mysql.example.com"
+      username: "backup_user"
+      password: "secret_password"
+      database: "app_db"
+      port: 3306
+    objectStorage:
+      backend: "azure"
+      azure:
+        storageAccount: "mystorageaccount"
+        storageKey: "mybase64encodedkey..."
+        container: "db-backups"
+        prefix: "mysql/production"
+    extraArgs: "--single-transaction --routines"
+
+# Slack notifications
+notifications:
+  slack:
+    enabled: true
+    webhookUrl: "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
+    channel: "#backups"
+    username: "Dumpscript Bot"
+    notifyOnSuccess: false
+
+# Service Account configuration
+serviceAccount:
+  create: true
+  automount: true
+  annotations:
+    eks.amazonaws.com/role-arn: "arn:aws:iam::123456789012:role/BackupRole"
+  name: ""
+  namespace: ""
+
+# Pod configuration
+podAnnotations: {}
+podLabels: {}
+
+# Security context
+podSecurityContext: {}
+securityContext: {}
+
+# Pod resources and configuration
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# Network and scheduling configuration
+nodeSelector: {}
+tolerations: []
+affinity: {}
+```
+
+## MongoDB Configuration
+
+```yaml
+databases:
+  - type: mongodb
+    periodicity:
+      - type: daily
+        retentionDays: 7
+        schedule: "0 2 * * *"  # Daily at 2:00 AM
+    connectionInfo:
+      host: "mongo.example.com"
+      username: "backup_user"
+      password: "secure_password"
+      database: "app_db"
+      port: 27017
+    objectStorage:
+      region: "us-east-1"
+      bucket: "my-db-backups"
+      bucketPrefix: "mongodb/app"
+    extraArgs: "--authenticationDatabase=admin"
+```
+
+MongoDB backup notes:
+- Uses `mongodump` to create a compressed archive (`dump_restore.archive.gz`).
+- Set `extraArgs` for cluster URIs (e.g., `--uri="mongodb+srv://..."`).
+- For SCRAM auth, ensure `--authenticationDatabase` matches your setup (often `admin`).
+- Grant the backup user `read` on target DB; cluster-wide backups may require broader roles.
+
+## Database Version Support
+
+### PostgreSQL Versions
+- **14**: PostgreSQL 14.x
+- **15**: PostgreSQL 15.x
+- **16**: PostgreSQL 16.x (default)
+- **17**: PostgreSQL 17.x
+- **18**: PostgreSQL 18.x
+
+**Version Availability by Alpine Base Image:**
+- **Alpine 3.20**: PostgreSQL versions `14`, `15`, `16`
+- **Alpine 3.21**: PostgreSQL versions `15`, `16`, `17`
+- **Alpine edge** (pinned digest): PostgreSQL versions `16`, `17`, `18`
+
+> **Note**: To use PostgreSQL 18, set `image.tag` to a `*-alpine-edge` tag (e.g. `v0.0.39-alpine-edge`). The client version should match your PostgreSQL server version to avoid compatibility issues.
+
+### MySQL/MariaDB Versions
+- **5.7**: MySQL 5.7
+- **8.0**: MySQL 8.0
+- **10.11**: MariaDB 10.11 (default)
+- **11.4**: MariaDB 11.4
+
+**Important**: The client version should match your database server version to avoid compatibility issues.
+
+### MongoDB Tools
+- MongoDB backups use `mongodump`/`mongorestore` from MongoDB Database Tools.
+- Tools are installed at runtime (no version pinning).
+
+## Multiple Backup Schedules
+
+Each database can have multiple backup schedules with different retention policies:
+
+```yaml
+databases:
+  - type: postgresql
+    version: "17"
+    periodicity:
+      - type: daily
+        retentionDays: 7
+        schedule: "0 2 * * *"  # Daily at 2:00 AM
+      - type: weekly
+        retentionDays: 30
+        schedule: "0 3 * * 0"  # Weekly on Sunday at 3:00 AM
+      - type: monthly
+        retentionDays: 365
+        schedule: "0 4 1 * *"  # Monthly on 1st at 4:00 AM
+      - type: yearly
+        retentionDays: 2555  # 7 years
+        schedule: "0 5 1 1 *"  # Yearly on January 1st at 5:00 AM
+```
+
+## Kubernetes Secrets
+
+### Secret for Database Credentials
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-credentials
+  namespace: default
+type: Opaque
+data:
+  host: bXlzcWwuZXhhbXBsZS5jb20=              # mysql.example.com
+  username: YmFja3VwX3VzZXI=                  # backup_user
+  password: c3VwZXJfc2VjcmV0X3Bhc3N3b3Jk        # super_secret_password
+  database: YXBwX2Ri                          # app_db
+  port: MzMwNg==                              # 3306
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-credentials
+  namespace: default
+type: Opaque
+data:
+  host: cG9zdGdyZXMuZXhhbXBsZS5jb20=          # postgres.example.com
+  username: YmFja3VwX3VzZXI=                  # backup_user
+  password: c3VwZXJfc2VjcmV0X3Bhc3N3b3Jk        # super_secret_password
+  database: YXBwX2Ri                          # app_db
+  port: NTQzMg==                              # 5432
+```
+
+### Secret for Object Storage Credentials
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: s3-credentials
+  namespace: default
+type: Opaque
+data:
+  region: dXMtd2VzdC0y                        # us-west-2
+  bucket: bXktY29tcGFueS1iYWNrdXBz            # my-company-backups
+  bucketPrefix: ZGF0YWJhc2UtZHVtcHMv            # database-dumps/
+  # Optional: direct credentials (not recommended)
+  # accessKeyId: QUtJQUlPU0ZPRE5ON0VYQU1QTEU=
+  # secretAccessKey: d0phbExyWGVOdC9LN21ESVkvYk1FeFJZSEs0WUs1TUVRc1pKVHU=
+```
+
+### Secret for Production with IAM Role
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: production-s3-credentials
+  namespace: default
+type: Opaque
+data:
+  region: dXMtZWFzdC0x                        # us-east-1
+  bucket: cHJvZHVjdGlvbi1kYi1iYWNrdXBz        # production-db-backups
+  bucketPrefix: cG9zdGdyZXMtcHJvZC8=          # postgres-prod/
+```
+
+## Creating Secrets via kubectl
+
+```bash
+# Secret for MySQL database
+kubectl create secret generic mysql-credentials \
+  --from-literal=host=mysql.example.com \
+  --from-literal=username=backup_user \
+  --from-literal=password=super_secret_password \
+  --from-literal=database=app_db \
+  --from-literal=port=3306
+
+# Secret for MariaDB database
+kubectl create secret generic mariadb-credentials \
+  --from-literal=host=mariadb.example.com \
+  --from-literal=username=backup_user \
+  --from-literal=password=super_secret_password \
+  --from-literal=database=app_db \
+  --from-literal=port=3306
+
+# Secret for PostgreSQL database
+kubectl create secret generic postgres-credentials \
+  --from-literal=host=postgres.example.com \
+  --from-literal=username=backup_user \
+  --from-literal=password=super_secret_password \
+  --from-literal=database=app_db \
+  --from-literal=port=5432
+
+# Secret for Object Storage (using IAM Role)
+kubectl create secret generic s3-credentials \
+  --from-literal=region=us-west-2 \
+  --from-literal=bucket=my-company-backups \
+  --from-literal=bucketPrefix=database-dumps/
+
+# Secret for Object Storage (using Access Keys - not recommended)
+kubectl create secret generic s3-credentials-keys \
+  --from-literal=region=us-west-2 \
+  --from-literal=bucket=my-company-backups \
+  --from-literal=bucketPrefix=database-dumps/ \
+  --from-literal=accessKeyId=AKIAIOSFODNN7EXAMPLE \
+  --from-literal=secretAccessKey=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+# Secret for Azure Blob Storage (using storage account key)
+kubectl create secret generic azure-storage-credentials \
+  --from-literal=storageAccount=mystorageaccount \
+  --from-literal=storageKey=mybase64encodedstoragekey...
+
+# Secret for Azure Blob Storage (using SAS token)
+kubectl create secret generic azure-storage-credentials-sas \
+  --from-literal=storageAccount=mystorageaccount \
+  --from-literal=sasToken="sv=2021-06-08&ss=b&srt=sco&sp=rwdlac&se=2026-01-01T00:00:00Z&sig=..."
+```
+
+## Storage and Volumes
+
+### ⚠️ Critical: Storage Requirements
+
+The DumpScript container uses the `/dumpscript` directory as its working directory and **temporary storage** for database dumps before uploading to Object Storage. It is **critical** to ensure this directory has sufficient storage space to accommodate the full size of your database dump.
+
+#### Why Storage Space Matters
+
+- **Temporary Storage**: Database dumps are created locally in `/dumpscript` before being compressed and uploaded to Object Storage
+- **Compression Process**: The dump is compressed using gzip, which requires additional temporary space during compression
+- **No Streaming**: The current implementation creates the complete dump file locally before uploading (not streaming)
+- **Failure Risk**: Insufficient space will cause the backup process to fail with "No space left on device" errors
+
+#### Storage Space Calculation
+
+**Minimum Required Space:**
+```
+Required Space = Database Size × 1.5
+```
+
+**Recommended Space:**
+```
+Recommended Space = Database Size × 2.0
+```
+
+#### Examples
+
+| Database Size | Minimum Space | Recommended Space |
+|---------------|---------------|-------------------|
+| 1 GB          | 1.5 GB        | 2 GB              |
+| 10 GB         | 15 GB         | 20 GB             |
+| 100 GB        | 150 GB        | 200 GB            |
+| 500 GB        | 750 GB        | 1 TB              |
+
+### Volume Configuration
+
+Each database can now be configured with custom volumes and volume mounts using the `extraVolumes` and `extraVolumeMounts` parameters. This allows for flexible storage solutions based on your specific requirements.
+
+#### Using emptyDir (Recommended for most cases)
+
+```yaml
+# In your values.yaml
+databases:
+  - type: postgresql
+    version: "17"
+    # ... other configuration ...
+    extraVolumes:
+      - name: temp-data
+        emptyDir:
+          sizeLimit: 20Gi  # Adjust based on your database size
+    extraVolumeMounts:
+      - name: temp-data
+        mountPath: /dumpscript
+        readOnly: false
+```
+
+#### Using Ephemeral Volumes (Recommended for large databases)
+
+For large databases that require persistent storage during the backup process:
+
+```yaml
+databases:
+  - type: postgresql
+    version: "17"
+    # ... other configuration ...
+    extraVolumes:
+      - name: temp-data
+        ephemeral:
+          volumeClaimTemplate:
+            metadata:
+              labels:
+                type: temp-data
+            spec:
+              accessModes: ["ReadWriteOnce"]
+              storageClassName: "gp3"
+              resources:
+                requests:
+                  storage: 100Gi  # Adjust based on your database size
+    extraVolumeMounts:
+      - name: temp-data
+        mountPath: /dumpscript
+        readOnly: false
+```
+
+#### Using Persistent Volumes
+
+For databases that need persistent storage across pod restarts:
+
+```yaml
+databases:
+  - type: postgresql
+    version: "17"
+    # ... other configuration ...
+    extraVolumes:
+      - name: temp-data
+        persistentVolumeClaim:
+          claimName: dumpscript-temp-pvc
+    extraVolumeMounts:
+      - name: temp-data
+        mountPath: /dumpscript
+        readOnly: false
+```
+
+#### Using Host Path (Development only)
+
+⚠️ **Warning**: Only use for development/testing environments:
+
+```yaml
+databases:
+  - type: postgresql
+    version: "17"
+    # ... other configuration ...
+    extraVolumes:
+      - name: temp-data
+        hostPath:
+          path: /tmp/dumpscript
+          type: DirectoryOrCreate
+    extraVolumeMounts:
+      - name: temp-data
+        mountPath: /dumpscript
+        readOnly: false
+```
+
+### Monitoring Storage Usage
+
+The container includes debug logs to monitor storage usage:
+
+```bash
+# Check logs for storage information
+kubectl logs -l app.kubernetes.io/name=dumpscript
+
+# Look for these debug messages:
+[DEBUG] Available space in /dumpscript: Filesystem      Size  Used Avail Use% Mounted on
+[DEBUG] Available space in /dumpscript: tmpfs           20G   1.2G   19G   6% /dumpscript
+```
+
+### Troubleshooting Storage Issues
+
+If you encounter storage-related failures:
+
+1. **Check available space**: Look for `[DEBUG] Available space in /dumpscript` in logs
+2. **Monitor during backup**: Watch space usage during the dump process
+3. **Increase storage**: Add more storage to the `/dumpscript` directory
+4. **Consider database size**: Large databases may require significant temporary storage
+5. **Verify volume mounts**: Ensure volumes are properly mounted at `/dumpscript`
+
+## Configuration Parameters
+
+### Global Configuration
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `image.repository` | Docker image repository | `ghcr.io/cloudscript-technology/dumpscript` |
+| `image.pullPolicy` | Image pull policy | `IfNotPresent` |
+| `image.tag` | Image tag | `""` (uses appVersion) |
+| `imagePullSecrets` | Image pull secrets | `[]` |
+| `nameOverride` | Override chart name | `""` |
+| `fullnameOverride` | Override full chart name | `""` |
+
+### Database Configuration
+
+| Parameter | Description | Required |
+|-----------|-------------|----------|
+| `databases[].type` | Database type (`postgresql`, `mysql`, `mariadb`, `mongodb`) | ✅ |
+| `databases[].version` | Database client version | ✅ |
+| `databases[].periodicity[].type` | Backup type (`daily`, `weekly`, `monthly`, `yearly`) | ✅ |
+| `databases[].periodicity[].schedule` | Cron expression for scheduling | ✅ |
+| `databases[].periodicity[].retentionDays` | Retention period in days (integer) | ✅ |
+| `databases[].connectionInfo.host` | Database host | ✅* |
+| `databases[].connectionInfo.username` | Database username | ✅* |
+| `databases[].connectionInfo.password` | Database password | ✅* |
+| `databases[].connectionInfo.database` | Database name | ✅* |
+| `databases[].connectionInfo.port` | Database port | ✅* |
+| `databases[].connectionInfo.secretName` | Secret name with credentials | ✅** |
+| `databases[].objectStorage.backend` | Storage backend (`s3` or `azure`) | ❌ (default: `s3`) |
+| **S3 backend** | | |
+| `databases[].objectStorage.region` | S3 region (e.g. us-west-2) | ✅* |
+| `databases[].objectStorage.bucket` | S3 bucket name | ✅* |
+| `databases[].objectStorage.bucketPrefix` | S3 key prefix | ❌ |
+| `databases[].objectStorage.secretName` | Secret with S3 credentials (keys: `accessKeyId`, `secretAccessKey`) | ✅** |
+| `databases[].objectStorage.endpointUrl` | Custom S3 endpoint URL (MinIO, DigitalOcean Spaces) | ❌ |
+| **Azure backend** | | |
+| `databases[].objectStorage.azure.storageAccount` | Azure storage account name | ✅* |
+| `databases[].objectStorage.azure.storageKey` | Azure storage account access key | ✅*** |
+| `databases[].objectStorage.azure.sasToken` | Azure SAS token (alternative to storageKey) | ✅*** |
+| `databases[].objectStorage.azure.container` | Azure Blob container name | ✅* |
+| `databases[].objectStorage.azure.prefix` | Blob key prefix | ❌ |
+| `databases[].objectStorage.azure.secretName` | Secret with Azure credentials (keys: `storageAccount`, `storageKey` or `sasToken`) | ✅** |
+| **General** | | |
+| `databases[].extraArgs` | Extra arguments for dump | ❌ |
+
+*\* Required when `secretName` is not provided*
+*\*\* Required when direct values are not provided*
+*\*\*\* One of `storageKey` or `sasToken` is required for Azure backend*
+
+### Slack Notifications
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `notifications.slack.enabled` | Enable Slack notifications | `false` |
+| `notifications.slack.webhookUrl` | Slack webhook URL | `""` |
+| `notifications.slack.channel` | Slack channel (optional) | `""` |
+| `notifications.slack.username` | Slack username (optional) | `""` |
+| `notifications.slack.notifyOnSuccess` | Notify on successful backups | `false` |
+
+### Service Account Configuration
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `serviceAccount.create` | Create service account | `true` |
+| `serviceAccount.automount` | Automount token | `true` |
+| `serviceAccount.annotations` | Service account annotations | `{}` |
+| `serviceAccount.name` | Service account name | `""` |
+| `serviceAccount.namespace` | Service account namespace | `""` |
+
+### Pod Configuration
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `podAnnotations` | Pod annotations | `{}` |
+| `podLabels` | Pod labels | `{}` |
+| `podSecurityContext` | Pod security context | `{}` |
+| `securityContext` | Container security context | `{}` |
+| `resources` | Resource requests and limits | `{}` |
+| `nodeSelector` | Node selector | `{}` |
+| `tolerations` | Tolerations | `[]` |
+| `affinity` | Affinity rules | `{}` |
+
+### Volume Configuration
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `databases[].extraVolumes` | Extra volumes for each database pod | `[]` |
+| `databases[].extraVolumeMounts` | Extra volume mounts for each database container | `[]` |
+
+## Usage Examples
+
+### Simple PostgreSQL Backup with Multiple Schedules
+
+```yaml
+databases:
+  - type: postgresql
+    version: "17"
+    periodicity:
+      - type: daily
+        retentionDays: 7
+        schedule: "0 2 * * *"  # Daily at 2:00 AM
+      - type: weekly
+        retentionDays: 30
+        schedule: "0 3 * * 0"  # Weekly on Sunday at 3:00 AM
+    connectionInfo:
+      host: "postgres.internal"
+      username: "backup_user"
+      password: "backup_password"
+      database: "myapp"
+      port: 5432
+    objectStorage:
+      region: "us-west-2"
+      bucket: "myapp-backups"
+      bucketPrefix: "postgres/"
+    extraArgs: "--verbose --single-transaction"
+    # Volume configuration for temporary storage
+    extraVolumes:
+      - name: temp-data
+        emptyDir:
+          sizeLimit: 20Gi
+    extraVolumeMounts:
+      - name: temp-data
+        mountPath: /dumpscript
+        readOnly: false
+```
+
+### Backup with IAM Role and Slack Notifications
+
+```yaml
+databases:
+  - type: postgresql
+    version: "16"
+    periodicity:
+      - type: daily
+        retentionDays: 14
+        schedule: "0 1 * * *"  # Daily at 1:00 AM
+      - type: monthly
+        retentionDays: 365
+        schedule: "0 4 1 * *"  # Monthly on 1st at 4:00 AM
+    connectionInfo:
+      secretName: "db-credentials"
+    objectStorage:
+      region: "us-west-2"
+      bucket: "secure-backups"
+      bucketPrefix: "production/postgres/"
+    extraArgs: "--verbose --single-transaction"
+
+notifications:
+  slack:
+    enabled: true
+    webhookUrl: "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK"
+    channel: "#backups"
+    username: "Dumpscript Bot"
+    notifyOnSuccess: false
+
+serviceAccount:
+  create: true
+  annotations:
+    eks.amazonaws.com/role-arn: "arn:aws:iam::123456789012:role/DatabaseBackupRole"
+```
+
+### Large Database with Ephemeral Volume
+
+For large databases that require significant temporary storage:
+
+```yaml
+databases:
+  - type: postgresql
+    version: "17"
+    periodicity:
+      - type: daily
+        retentionDays: 30
+        schedule: "0 1 * * *"  # Daily at 1:00 AM
+    connectionInfo:
+      secretName: "prod-postgres-creds"
+    objectStorage:
+      secretName: "prod-s3-creds"
+      region: "us-west-2"
+      bucket: "secure-backups"
+      bucketPrefix: "production/postgres/"
+    extraArgs: "--verbose --single-transaction"
+    # Ephemeral volume for large database temporary storage
+    extraVolumes:
+      - name: temp-data
+        ephemeral:
+          volumeClaimTemplate:
+            metadata:
+              labels:
+                type: temp-data
+            spec:
+              accessModes: ["ReadWriteOnce"]
+              storageClassName: "gp3"
+              resources:
+                requests:
+                  storage: 200Gi  # Large storage for big database
+    extraVolumeMounts:
+      - name: temp-data
+        mountPath: /dumpscript
+        readOnly: false
+```
+
+### Multiple Databases with Different Versions
+
+```yaml
+databases:
+  # Production PostgreSQL
+  - type: postgresql
+    version: "17"
+    periodicity:
+      - type: daily
+        retentionDays: 30
+        schedule: "0 1 * * *"  # Daily at 1:00 AM
+      - type: monthly
+        retentionDays: 365
+        schedule: "0 4 1 * *"  # Monthly on 1st at 4:00 AM
+    connectionInfo:
+      secretName: "prod-postgres-creds"
+    objectStorage:
+      secretName: "prod-s3-creds"
+      region: "us-west-2"
+      bucket: "secure-backups"
+      bucketPrefix: "production/postgres/"
+    extraArgs: "--verbose --single-transaction"
+
+  # Development MariaDB
+  - type: mariadb
+    version: "11.4"
+    periodicity:
+      - type: daily
+        retentionDays: 14
+        schedule: "0 2 * * *"  # Daily at 2:00 AM
+      - type: weekly
+        retentionDays: 60
+        schedule: "0 3 * * 0"  # Weekly on Sunday at 3:00 AM
+    connectionInfo:
+      secretName: "dev-mariadb-creds"
+    objectStorage:
+      secretName: "dev-s3-creds"
+      region: "us-west-2"
+      bucket: "secure-backups"
+      bucketPrefix: "develop/mariadb/"
+    extraArgs: "--opt --single-transaction"
+
+  # Test PostgreSQL
+  - type: postgresql
+    version: "15"
+    periodicity:
+      - type: weekly
+        retentionDays: 90
+        schedule: "0 0 * * 0"  # Weekly on Sunday at midnight
+    connectionInfo:
+      secretName: "test-postgres-creds"
+    objectStorage:
+      secretName: "test-s3-creds"
+      region: "us-west-2"
+      bucket: "secure-backups"
+      bucketPrefix: "test/postgres/"
+    extraArgs: "--clean --if-exists"
+```
+
+## Common Cron Expressions
+
+| Expression | Description |
+|------------|-------------|
+| `0 2 * * *` | Every day at 2:00 AM |
+| `0 */6 * * *` | Every 6 hours |
+| `0 1 * * 0` | Every Sunday at 1:00 AM |
+| `0 3 1 * *` | First day of month at 3:00 AM |
+| `0 2 * * 1-5` | Monday to Friday at 2:00 AM |
+| `0 5 1 1 *` | January 1st at 5:00 AM (yearly) |
+
+## Common Extra Arguments
+
+### PostgreSQL (`pg_dump`)
+
+```bash
+--verbose                    # Verbose output
+--single-transaction         # Dump in a single transaction
+--clean                      # Include DROP commands
+--if-exists                  # Use IF EXISTS with DROP
+--no-owner                   # Don't include owner commands
+--no-privileges              # Don't include privilege commands
+--encoding=UTF8              # Specify encoding
+--schema=public              # Dump only public schema
+```
+
+### MySQL (`mysqldump`)
+
+```bash
+--opt                        # Default optimizations
+--single-transaction         # Dump in a single transaction
+--routines                   # Include stored procedures
+--triggers                   # Include triggers
+--events                     # Include events
+--flush-logs                 # Flush logs before dump
+--master-data=2              # Include replication information
+--no-tablespaces             # Don't include tablespaces
+```
+
+### MongoDB (`mongodump`)
+
+```bash
+--authenticationDatabase=admin   # Auth database (often 'admin')
+--uri="mongodb+srv://..."        # Cluster URI for Atlas/replicasets
+--gzip                           # Compress output
+--archive                        # Output to archive
+--db=app_db                      # Single-DB dump; omit for full instance
+```
+
+## Troubleshooting
+
+### Check CronJob Status
+
+```bash
+# List all cronjobs
+kubectl get cronjobs
+
+# Check specific jobs
+kubectl get cronjobs -l app.kubernetes.io/name=dumpscript
+
+# Check logs from a specific job
+kubectl logs -l app.kubernetes.io/name=dumpscript,dumpscript.io/database-index=0
+```
+
+### Common Issues
+
+**1. Database connection error**
+```bash
+# Check if secret exists
+kubectl get secret mysql-credentials -o yaml
+
+# Test connectivity
+kubectl run debug --image=postgres:13 --rm -it -- psql -h postgres.example.com -U backup_user -d app_db
+```
+
+**2. Object Storage authentication error**
+```bash
+# Check if service account has correct annotations
+kubectl get serviceaccount dumpscript -o yaml
+
+# Check if IAM role exists and has correct permissions
+aws iam get-role --role-name BackupRole
+```
+
+**3. Object Storage permissions error**
+```bash
+# Check bucket permissions
+aws s3 ls s3://my-company-backups/database-dumps/
+
+# Test manual upload
+aws s3 cp test.txt s3://my-company-backups/database-dumps/
+```
+
+**4. Version compatibility issues**
+```bash
+# Check database server version
+kubectl run debug --image=postgres:17 --rm -it -- psql -h postgres.example.com -U backup_user -d app_db -c "SELECT version();"
+
+# Verify client version matches server version
+```
+
+### Detailed Logs
+
+```bash
+# Logs from a specific job
+kubectl logs job/dumpscript-db-0-1234567890
+
+# Logs from all jobs
+kubectl logs -l app.kubernetes.io/name=dumpscript
+
+# Follow logs in real-time
+kubectl logs -f -l app.kubernetes.io/name=dumpscript
+```
+
+## Security
+
+### Best Practices
+
+1. **Use Kubernetes Secrets** for sensitive credentials
+2. **Use IAM Roles** instead of access keys when possible
+3. **Restrict permissions** to minimum required
+4. **Use namespaces** for isolation
+5. **Configure Network Policies** for traffic control
+6. **Monitor logs** for suspicious activities
+7. **Match client versions** with database server versions
+
+## AWS IAM Policy Requirements
+
+To allow Dumpscript to upload, list, and delete backups in your S3 bucket, the IAM role used by the container must have the following permissions:
+
+- `s3:GetObject` – Read backup files from S3 (for restore)
+- `s3:PutObject` – Upload new backup files to S3
+- `s3:DeleteObject` – Remove old backups from S3 (for retention policy)
+- `s3:ListBucket` – List objects in the S3 bucket (for cleanup and restore)
+- `s3:ListObjects`, `s3:ListObjectsV2` – List objects within a bucket and support recursive listing (required for AWS CLI and scripts that use `aws s3 ls --recursive`)
+
+Below is an example of a minimal IAM policy for S3 access:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject",
+        "s3:ListObjects",
+        "s3:ListObjectsV2"
+      ],
+      "Resource": "arn:aws:s3:::your-bucket-name/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": "arn:aws:s3:::your-bucket-name"
+    }
+  ]
+}
+```
+
+Replace `your-bucket-name` with the actual name of your S3 bucket. Granting only these permissions ensures the tool can perform all backup, restore, and cleanup operations securely.
+
+## Storage Backends
+
+DumpScript supports two storage backends, configured per database via `objectStorage.backend`.
+
+### Azure Blob Storage (native)
+
+Use `backend: "azure"` for native Azure Blob Storage support. This does not require S3-compatible API access.
+
+```yaml
+databases:
+  - type: postgresql
+    version: "17"
+    periodicity:
+      - type: daily
+        retentionDays: 7
+        schedule: "0 2 * * *"
+    connectionInfo:
+      secretName: "db-credentials"
+    objectStorage:
+      backend: "azure"
+      azure:
+        storageAccount: "mystorageaccount"
+        storageKey: "mybase64encodedkey..."
+        container: "db-backups"
+        prefix: "postgres/production"
+```
+
+#### Azure Credentials via Kubernetes Secret
+
+```bash
+kubectl create secret generic azure-storage-credentials \
+  --from-literal=storageAccount=mystorageaccount \
+  --from-literal=storageKey=mybase64encodedkey...
+```
+
+```yaml
+objectStorage:
+  backend: "azure"
+  azure:
+    container: "db-backups"
+    prefix: "postgres/production"
+    secretName: "azure-storage-credentials"
+```
+
+#### Azure with SAS Token
+
+```yaml
+objectStorage:
+  backend: "azure"
+  azure:
+    storageAccount: "mystorageaccount"
+    sasToken: "sv=2021-06-08&ss=b&srt=sco&sp=rwdlac&se=2026-01-01T00:00:00Z&sig=..."
+    container: "db-backups"
+    prefix: "postgres/production"
+```
+
+#### Azure RBAC Requirements
+
+Assign the **Storage Blob Data Contributor** role to the identity:
+
+```bash
+az role assignment create \
+  --assignee "<principal-id>" \
+  --role "Storage Blob Data Contributor" \
+  --scope "/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.Storage/storageAccounts/<account>"
+```
+
+For Kubernetes with Azure Workload Identity:
+
+```yaml
+serviceAccount:
+  create: true
+  annotations:
+    azure.workload.identity/client-id: "<azure-client-id>"
+```
+
+### S3-Compatible Storage (MinIO, DigitalOcean Spaces)
+
+DumpScript supports any S3-compatible storage provider via the `objectStorage.endpointUrl` parameter.
+
+### MinIO
+
+```yaml
+databases:
+  - type: postgresql
+    version: "17"
+    periodicity:
+      - type: daily
+        retentionDays: 7
+        schedule: "0 2 * * *"
+    connectionInfo:
+      secretName: "db-credentials"
+    objectStorage:
+      region: "us-east-1"
+      bucket: "backups"
+      bucketPrefix: "postgres"
+      secretName: "minio-credentials"
+      endpointUrl: "https://minio.example.com"
+```
+
+Create the secret with MinIO credentials:
+
+```bash
+kubectl create secret generic minio-credentials \
+  --from-literal=accessKeyId=<minio-access-key> \
+  --from-literal=secretAccessKey=<minio-secret-key>
+```
+
+### DigitalOcean Spaces
+
+```yaml
+databases:
+  - type: postgresql
+    version: "17"
+    periodicity:
+      - type: daily
+        retentionDays: 7
+        schedule: "0 2 * * *"
+    connectionInfo:
+      secretName: "db-credentials"
+    objectStorage:
+      region: "nyc3"
+      bucket: "my-space"
+      bucketPrefix: "backups/postgres"
+      secretName: "do-spaces-credentials"
+      endpointUrl: "https://nyc3.digitaloceanspaces.com"
+```
+
+Create the secret with DigitalOcean Spaces credentials:
+
+```bash
+kubectl create secret generic do-spaces-credentials \
+  --from-literal=accessKeyId=<spaces-access-key> \
+  --from-literal=secretAccessKey=<spaces-secret-key>
+```
+
+Generate new digest:
+```bash
+shasum -a 256 dumpscript-<version>.tgz
+```
+
+## How It Works
+
+1. Runtime installation: The container installs the appropriate database client based on the configured `version` for each database.
+2. Dynamic client installation: Clients are installed via Alpine's package manager at startup.
+3. Version verification: Installation is verified and the client version is logged.
+4. Database operations: Dump/restore scripts run with the correct client for each engine.
+5. Multiple schedules: Each database supports independent schedules with distinct retention policies.
+6. Storage upload: Dumps are uploaded using [rclone](https://rclone.org/) to the configured storage backend (S3 or Azure Blob Storage), with automatic multipart upload, retries, and chunked transfers.
+7. Path structure: `<prefix>/<periodicity>/<year>/<month>/<day>/<dump_file>` — identical for both backends.
+8. Notifications: Optional Slack notifications for backup status.
+
+## Full Instance Dump/Restore
+
+### Full instance dump (database omitted)
+- MySQL/MariaDB: use `--all-databases` with `mysqldump`/`mariadb-dump`.
+- PostgreSQL: use `pg_dumpall` for all databases, roles, and tablespaces.
+- MongoDB: omit `--db` in `mongodump` to dump the entire instance.
+
+### Full instance restore (database omitted)
+- MySQL/MariaDB: import directly into the server without selecting a database (`mysql`/`mariadb` reading the file). If the dump was generated with `--all-databases`, it will include creation and data for all databases.
+- PostgreSQL: use `psql -d postgres` to apply `pg_dumpall` (roles, tablespaces, and all databases). Requires elevated privileges.
+- MongoDB: omit `--db` in `mongorestore` to restore the entire instance.
+
+For full instance restores, `CREATE_DB` only has an effect when a specific database is defined.
