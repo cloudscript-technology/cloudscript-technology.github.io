@@ -1,0 +1,42 @@
+version: 1.0.1
+name: opsscript-agent
+displayName: opsscript-agent
+createdAt: 2026-07-04T19:44:11Z
+description: The OpsScript Kubernetes Agent runs inside the client's Kubernetes cluster, collects data from configured integrations (Elasticsearch, Kubernetes, Alertmanager webhooks) and ships it to the OpsScript platform, where alerts and tickets are created automatically.
+logoPath: ../cloudscript-logo.png
+logoURL: https://charts.cloudscript.com.br/helm-charts/opsscript-agent/cloudscript-logo.png
+digest: bb29843364d803fc35250a9001e9fc40e4984a3e5675194e79c659d57ddcde85
+license: Apache-2.0
+homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/opsscript-agent
+appVersion: v1.0.1
+containsSecurityUpdates: false
+operator: false
+deprecated: false
+prerelease: false
+keywords:
+  - kubernetes
+  - helm
+  - cloudscript
+maintainers:
+  - name: Jonathan Schmitt
+    email: jonathan.schmitt@cloudscript.com.br
+links:
+  - name: Github
+    url: https://github.com/cloudscript-technology/helm-charts/tree/main/opsscript-agent
+  - name: Cloudscript
+    url: https://cloudscript.com.br
+install: |
+  ### Adicionando o Repositório
+
+  Adicione o repositório de Helm Charts da Cloudscript ao seu ambiente local:
+  ```bash
+  helm repo add cloudscript https://charts.cloudscript.com.br
+  helm repo update
+  ```
+
+  ### Instalando um Chart
+
+  Escolha o diretório correspondente à ferramenta desejada e instale o Chart:
+  ```bash
+  helm install my-release cloudscript/opsscript-agent
+  ```
