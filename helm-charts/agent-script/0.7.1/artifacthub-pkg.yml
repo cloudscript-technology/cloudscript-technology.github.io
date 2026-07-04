@@ -3,8 +3,8 @@ name: agent-script
 displayName: agent-script
 createdAt: 2026-07-04T19:27:35Z
 description: DEPRECATED — replaced by the opsscript-agent chart. The AgentScript is a tool developed by Cloudscript that acts as an agent within the client's Kubernetes cluster. It collects relevant information to generate personalized alerts and automatically create tickets in the OpsScript platform.
-logoPath: ../cloudscript-logo.png
-logoURL: https://charts.cloudscript.com.br/helm-charts/agent-script/cloudscript-logo.png
+logoPath: ../logo.png
+logoURL: https://charts.cloudscript.com.br/helm-charts/agent-script/logo.png
 digest: 5302133a1188bddbf1957182b80017245baca189ded3d9c6d191f7f6d5c595e8
 license: Apache-2.0
 homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/agent-script

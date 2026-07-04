@@ -3,8 +3,8 @@ name: dumpscript
 displayName: dumpscript
 createdAt: 2026-04-16T15:28:04Z
 description: The DumpScript is a unified system for backup and restore of MySQL, PostgreSQL and MongoDB databases to S3-compatible storage and Azure Blob Storage.
-logoPath: ../cloudscript-logo.png
-logoURL: https://charts.cloudscript.com.br/helm-charts/dumpscript/cloudscript-logo.png
+logoPath: ../logo.png
+logoURL: https://charts.cloudscript.com.br/helm-charts/dumpscript/logo.png
 digest: 313c0a0778c1e0da2d4d43cb9eb16fb5a3846d98e0074db6877edf7b124e4109
 license: Apache-2.0
 homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/dumpscript

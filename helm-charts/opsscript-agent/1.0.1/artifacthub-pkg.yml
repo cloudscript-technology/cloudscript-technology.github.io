@@ -3,8 +3,8 @@ name: opsscript-agent
 displayName: opsscript-agent
 createdAt: 2026-07-04T19:44:11Z
 description: The OpsScript Kubernetes Agent runs inside the client's Kubernetes cluster, collects data from configured integrations (Elasticsearch, Kubernetes, Alertmanager webhooks) and ships it to the OpsScript platform, where alerts and tickets are created automatically.
-logoPath: ../cloudscript-logo.png
-logoURL: https://charts.cloudscript.com.br/helm-charts/opsscript-agent/cloudscript-logo.png
+logoPath: ../logo.png
+logoURL: https://charts.cloudscript.com.br/helm-charts/opsscript-agent/logo.png
 digest: bb29843364d803fc35250a9001e9fc40e4984a3e5675194e79c659d57ddcde85
 license: Apache-2.0
 homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/opsscript-agent

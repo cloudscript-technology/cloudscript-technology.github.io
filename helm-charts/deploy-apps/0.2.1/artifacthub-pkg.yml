@@ -3,8 +3,8 @@ name: deploy-apps
 displayName: deploy-apps
 createdAt: 2026-06-26T19:44:07Z
 description: Helm chart flexível para deploy de múltiplas aplicações (Deployment, StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
-logoPath: ../cloudscript-logo.png
-logoURL: https://charts.cloudscript.com.br/helm-charts/deploy-apps/cloudscript-logo.png
+logoPath: ../logo.png
+logoURL: https://charts.cloudscript.com.br/helm-charts/deploy-apps/logo.png
 digest: ea7d8c30a3e3155c72aa5e95989db482282f08c13b65a8dec7b367205b4b5c3d
 license: Apache-2.0
 homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/deploy-apps
