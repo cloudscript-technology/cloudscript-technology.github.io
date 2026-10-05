@@ -1,0 +1,42 @@
+version: 1.11.0
+name: dumpscript
+displayName: dumpscript
+createdAt: 2026-10-05T16:42:23Z
+description: The DumpScript is a unified system for backup and restore of MySQL, PostgreSQL, MongoDB and ClickHouse databases to S3-compatible storage and Azure Blob Storage.
+logoPath: ../logo.png
+logoURL: https://charts.cloudscript.com.br/helm-charts/dumpscript/logo.png
+digest: 4fdacecd1407f4f91b0482dde4c1d0ccce130644ed859805e9eab0b9e5bd3a49
+license: Apache-2.0
+homeURL: https://github.com/cloudscript-technology/helm-charts/tree/main/dumpscript
+appVersion: v0.0.45-alpine-edge
+containsSecurityUpdates: false
+operator: false
+deprecated: false
+prerelease: false
+keywords:
+  - kubernetes
+  - helm
+  - cloudscript
+maintainers:
+  - name: Jonathan Schmitt
+    email: jonathan.schmitt@cloudscript.com.br
+links:
+  - name: Github
+    url: https://github.com/cloudscript-technology/helm-charts/tree/main/dumpscript
+  - name: Cloudscript
+    url: https://cloudscript.com.br
+install: |
+  ### Adicionando o Repositório
+
+  Adicione o repositório de Helm Charts da Cloudscript ao seu ambiente local:
+  ```bash
+  helm repo add cloudscript https://charts.cloudscript.com.br
+  helm repo update
+  ```
+
+  ### Instalando um Chart
+
+  Escolha o diretório correspondente à ferramenta desejada e instale o Chart:
+  ```bash
+  helm install my-release cloudscript/dumpscript
+  ```

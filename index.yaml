@@ -20,7 +20,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/agent-script/0.7.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.31
-    created: "2026-09-29T17:00:51.942365146Z"
+    created: "2026-10-05T16:42:23.942840753Z"
     deprecated: true
     description: DEPRECATED — replaced by the opsscript-agent chart. The AgentScript
       is a tool developed by Cloudscript that acts as an agent within the client's
@@ -66,7 +66,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/agent-script/0.7.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.31
-    created: "2026-09-29T17:00:51.941953645Z"
+    created: "2026-10-05T16:42:23.942372474Z"
     description: The AgentScript is a tool developed by Cloudscript that acts as an
       agent within the client's Kubernetes cluster. It collects relevant information
       to generate personalized alerts and automatically create tickets in the OpsScript
@@ -111,7 +111,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/agent-script/0.6.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.28
-    created: "2026-09-29T17:00:51.941536755Z"
+    created: "2026-10-05T16:42:23.941913809Z"
     description: The AgentScript is a tool developed by Cloudscript that acts as an
       agent within the client's Kubernetes cluster. It collects relevant information
       to generate personalized alerts and automatically create tickets in the OpsScript
@@ -156,7 +156,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/agent-script/0.6.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.27
-    created: "2026-09-29T17:00:51.941084803Z"
+    created: "2026-10-05T16:42:23.941399749Z"
     description: The AgentScript is a tool developed by Cloudscript that acts as an
       agent within the client's Kubernetes cluster. It collects relevant information
       to generate personalized alerts and automatically create tickets in the OpsScript
@@ -201,7 +201,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/agent-script/0.5.1/values-schema.json
     apiVersion: v2
     appVersion: v0.0.21
-    created: "2026-09-29T17:00:51.940630257Z"
+    created: "2026-10-05T16:42:23.940889586Z"
     description: The AgentScript is a tool developed by Cloudscript that acts as an
       agent within the client's Kubernetes cluster. It collects relevant information
       to generate personalized alerts and automatically create tickets in the OpsScript
@@ -242,7 +242,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.3.1
-    created: "2026-09-29T17:00:51.960453451Z"
+    created: "2026-10-05T16:42:23.963621346Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
     digest: a4a8dae9695fe733fc636c01294844a396267c6ed2728ff176fb38bd6b8128de
@@ -284,7 +284,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.3.0
-    created: "2026-09-29T17:00:51.959418112Z"
+    created: "2026-10-05T16:42:23.962499115Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
     digest: ffa4a4c73ddd7411d8bc5acbbd65d370f7ec33e6f60f43522f25d10692151de8
@@ -326,7 +326,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.2.1
-    created: "2026-09-29T17:00:51.958534468Z"
+    created: "2026-10-05T16:42:23.960905872Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
     digest: ea7d8c30a3e3155c72aa5e95989db482282f08c13b65a8dec7b367205b4b5c3d
@@ -367,7 +367,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.2.0
-    created: "2026-09-29T17:00:51.957678996Z"
+    created: "2026-10-05T16:42:23.958823194Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
     digest: 3894239de8de8c73d6ae0d0e9560ff2d82b59e868fa36c19d83dc2771d28857f
@@ -408,7 +408,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.14
-    created: "2026-09-29T17:00:51.949252066Z"
+    created: "2026-10-05T16:42:23.950405519Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
     digest: 5671435a135ea580d6b4cb08b11574876d616ef7ec22fc84665fbc73981e7275
@@ -449,7 +449,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.13
-    created: "2026-09-29T17:00:51.948348343Z"
+    created: "2026-10-05T16:42:23.94940385Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
     digest: a4a3885868c492abae4f8059dbbf151a9d847ace8ba85d61e8b545bd46058a35
@@ -490,7 +490,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.12
-    created: "2026-09-29T17:00:51.94748547Z"
+    created: "2026-10-05T16:42:23.94840368Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
     digest: ff6f6bf9d8e5ba7e956565fe67334b046ab090871328d9cba9ef0fb469361550
@@ -531,7 +531,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.11
-    created: "2026-09-29T17:00:51.945365317Z"
+    created: "2026-10-05T16:42:23.947406801Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
     digest: 297639e32d3605d438d592443bd58e63c4f4fe35ad415e0abe12e43a79f8f2ca
@@ -572,7 +572,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.10
-    created: "2026-09-29T17:00:51.94455329Z"
+    created: "2026-10-05T16:42:23.946383798Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
     digest: 1c9636e6c6b7420f06a3a84f0b9d3adadc1336234da237193a18bd578cac6522
@@ -627,7 +627,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.9
-    created: "2026-09-29T17:00:51.956803614Z"
+    created: "2026-10-05T16:42:23.95777171Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
     digest: a177f982fb6f202ce1665c660177ff48f682ae6a10003cd9e2348f7a84697ab5
@@ -682,7 +682,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.8
-    created: "2026-09-29T17:00:51.955978287Z"
+    created: "2026-10-05T16:42:23.956813174Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets e KEDA
     digest: f2f3c6bbd990c39f80a956250448fadfc8a376e9de7f226626d55a3927d02f72
@@ -735,7 +735,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.7
-    created: "2026-09-29T17:00:51.955114573Z"
+    created: "2026-10-05T16:42:23.955876882Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets
     digest: 43aa320d2807990c888ace98d4a5e3145cd4e225fece30ff7f5e5cdfbdbb2ea9
@@ -784,7 +784,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.6
-    created: "2026-09-29T17:00:51.954031933Z"
+    created: "2026-10-05T16:42:23.955044071Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets
     digest: ee08ee14bc3e2f144ecba1b5aab568b1bc0c2b76a3db8603b66d6506ef42b4eb
@@ -833,7 +833,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.5
-    created: "2026-09-29T17:00:51.952004859Z"
+    created: "2026-10-05T16:42:23.95426445Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets
     digest: 7f1e21b865d60eb1b2c3d4a29dc177a848ec628bbb5ca9d45c94e4c28ea5f6cc
@@ -882,7 +882,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.4
-    created: "2026-09-29T17:00:51.95135935Z"
+    created: "2026-10-05T16:42:23.953446296Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets
     digest: 3f666ee799d0d8f8a0fc953aaaa9dedaf76817990e7af48834aab66e4f7c0054
@@ -931,7 +931,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.3
-    created: "2026-09-29T17:00:51.950568664Z"
+    created: "2026-10-05T16:42:23.951964316Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets
     digest: d8dde4def48ee43bb2ee8f07b9c19f635d139a98b93014bbf164c1c7944de293
@@ -980,7 +980,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.2
-    created: "2026-09-29T17:00:51.949892108Z"
+    created: "2026-10-05T16:42:23.95116428Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets
     digest: 06696a2e00aedcf76a1480dee57fbfce0cc0f816d22e20817e9c8132a397a39b
@@ -1029,7 +1029,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 0.1.1
-    created: "2026-09-29T17:00:51.943650347Z"
+    created: "2026-10-05T16:42:23.944649279Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets
     digest: afb2b27f0262cf66e5bcc8bdc459018aa27d7eda6f43be8464d71a0b470ab607
@@ -1078,7 +1078,7 @@ entries:
       artifacthub.io/provider: Cloudscript
     apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-09-29T17:00:51.943007031Z"
+    created: "2026-10-05T16:42:23.943587913Z"
     description: Helm chart flexível para deploy de múltiplas aplicações (Deployment,
       StatefulSet, CronJob, Job) com suporte a External Secrets
     digest: e041e839b067c5410376be886e610f20e758b5aff5089495729dd5e6921cdfd4
@@ -1106,6 +1106,61 @@ entries:
   dumpscript:
   - annotations:
       artifacthub.io/changes: |
+        - kind: fixed
+          description: "ClickHouse: `CLICKHOUSE_CLUSTER` (via `extraEnv`) polls `system.backups` on every replica via `clusterAllReplicas()`, so a load-balanced `DB_HOST` no longer fails with \"Lost track\" while the backup succeeds on another replica (needs `GRANT REMOTE ON *.*`), image v0.0.45"
+      artifacthub.io/containsSecurityUpdates: "false"
+      artifacthub.io/displayName: Dump Script
+      artifacthub.io/images: |
+        - name: dumpscript alpine3.21
+          image: ghcr.io/cloudscript-technology/dumpscript:v0.0.45-alpine-3-21
+        - name: dumpscript alpine3.20
+          image: ghcr.io/cloudscript-technology/dumpscript:v0.0.45-alpine-3-20
+        - name: dumpscript alpine-edge (PostgreSQL 18)
+          image: ghcr.io/cloudscript-technology/dumpscript:v0.0.45-alpine-edge
+      artifacthub.io/license: MIT
+      artifacthub.io/links: |
+        - name: Cloudscript
+          url: https://cloudscript.com.br
+        - name: Source
+          url: https://github.com/cloudscript-technology/helm-charts
+      artifacthub.io/provider: Cloudscript
+      artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.11.0/values-schema.json
+    apiVersion: v2
+    appVersion: v0.0.45-alpine-edge
+    created: "2026-10-05T16:42:23.96648223Z"
+    description: The DumpScript is a unified system for backup and restore of MySQL,
+      PostgreSQL, MongoDB and ClickHouse databases to S3-compatible storage and Azure
+      Blob Storage.
+    digest: 4fdacecd1407f4f91b0482dde4c1d0ccce130644ed859805e9eab0b9e5bd3a49
+    home: https://cloudscript.com.br
+    icon: https://charts.cloudscript.com.br/helm-charts/dumpscript/cloudscript-logo.png
+    keywords:
+    - kubernetes
+    - helm
+    - dumpscript
+    - cloudscript
+    - backup
+    - restore
+    - mysql
+    - postgresql
+    - mongodb
+    - clickhouse
+    - s3
+    - azure
+    - blob-storage
+    kubeVersion: '>= 1.27.0-0'
+    maintainers:
+    - email: jonathan.schmitt@cloudscript.com.br
+      name: Jonathan Schmitt
+    - email: helias.rodrigues@cloudscript.com.br
+      name: Helias Rodrigues
+    name: dumpscript
+    type: application
+    urls:
+    - helm-charts/dumpscript/1.11.0/dumpscript-1.11.0.tgz
+    version: 1.11.0
+  - annotations:
+      artifacthub.io/changes: |
         - kind: added
           description: "ClickHouse incremental backups: `CLICKHOUSE_BASE_BACKUP_PERIODICITY` (via `extraEnv`) makes one periodicity the full backup and the others incremental against its newest archive (`SETTINGS base_backup`), image v0.0.44"
       artifacthub.io/containsSecurityUpdates: "false"
@@ -1127,7 +1182,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.10.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.44-alpine-edge
-    created: "2026-09-29T17:00:51.9631767Z"
+    created: "2026-10-05T16:42:23.965530897Z"
     description: The DumpScript is a unified system for backup and restore of MySQL,
       PostgreSQL, MongoDB and ClickHouse databases to S3-compatible storage and Azure
       Blob Storage.
@@ -1188,7 +1243,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.9.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.43-alpine-edge
-    created: "2026-09-29T17:00:51.976932453Z"
+    created: "2026-10-05T16:42:23.983316818Z"
     description: The DumpScript is a unified system for backup and restore of MySQL,
       PostgreSQL, MongoDB and ClickHouse databases to S3-compatible storage and Azure
       Blob Storage.
@@ -1243,7 +1298,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.8.3/values-schema.json
     apiVersion: v2
     appVersion: v0.0.42-alpine-edge
-    created: "2026-09-29T17:00:51.97618396Z"
+    created: "2026-10-05T16:42:23.982375233Z"
     description: The DumpScript is a unified system for backup and restore of MySQL,
       PostgreSQL and MongoDB databases to S3-compatible storage and Azure Blob Storage.
     digest: 313c0a0778c1e0da2d4d43cb9eb16fb5a3846d98e0074db6877edf7b124e4109
@@ -1304,7 +1359,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.8.2/values-schema.json
     apiVersion: v2
     appVersion: v0.0.41-alpine-edge
-    created: "2026-09-29T17:00:51.9755115Z"
+    created: "2026-10-05T16:42:23.980929236Z"
     description: The DumpScript is a unified system for backup and restore of MySQL,
       PostgreSQL and MongoDB databases to S3-compatible storage and Azure Blob Storage.
     digest: 416ae61913aae0cca95025dab40453c0e7a22048944af5c2df7a3922a19e3ed4
@@ -1365,7 +1420,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.8.1/values-schema.json
     apiVersion: v2
     appVersion: v0.0.40-alpine-edge
-    created: "2026-09-29T17:00:51.974771389Z"
+    created: "2026-10-05T16:42:23.980064881Z"
     description: The DumpScript is a unified system for backup and restore of MySQL,
       PostgreSQL and MongoDB databases to S3-compatible storage and Azure Blob Storage.
     digest: f1d32fa9c26a2b782547d31196e75bd471d4329bc3a98ddfda775a9560c82fc6
@@ -1424,7 +1479,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.8.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.39-alpine-edge
-    created: "2026-09-29T17:00:51.973920504Z"
+    created: "2026-10-05T16:42:23.979173964Z"
     description: The DumpScript is a unified system for backup and restore of MySQL,
       PostgreSQL and MongoDB databases to S3-compatible storage and Azure Blob Storage.
     digest: 128b64354cac1d271a36caf4022b81829a3b61e62715c077ace3405c8f37835f
@@ -1479,7 +1534,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.7.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.38-alpine-3-21
-    created: "2026-09-29T17:00:51.972421736Z"
+    created: "2026-10-05T16:42:23.978345987Z"
     description: The DumpScript is a unified system for backup and restore of MySQL,
       PostgreSQL and MongoDB databases to S3-compatible storage and Azure Blob Storage.
     digest: 29be32e8a95cf4d9301da9cbdf3302a8c801048f628dcdbdb3c15cd4b1fedd7a
@@ -1530,7 +1585,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.6.3/values-schema.json
     apiVersion: v2
     appVersion: v0.0.36-alpine-3-21
-    created: "2026-09-29T17:00:51.971618862Z"
+    created: "2026-10-05T16:42:23.977527186Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3 and S3-compatible storage.
     digest: 7d0cf8ef09453d2a63e50932059637a36e2df5cd56d71cf042f750c270eeb88b
@@ -1578,7 +1633,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.6.1/values-schema.json
     apiVersion: v2
     appVersion: v0.0.36-alpine-3-21
-    created: "2026-09-29T17:00:51.970959392Z"
+    created: "2026-10-05T16:42:23.976768487Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3 and S3-compatible storage.
     digest: 1633b00db3c9ae9f1f1bd5646e94a8acf6132a9c2624f5a43f28912879715e18
@@ -1626,7 +1681,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.5.1/values-schema.json
     apiVersion: v2
     appVersion: v0.0.36-alpine-3-21
-    created: "2026-09-29T17:00:51.9702926Z"
+    created: "2026-10-05T16:42:23.976015484Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3 and S3-compatible storage.
     digest: 33883ca338d46b208bc0427f95d8f4a38119bf8fe4a9fb63cb29f5fd5f0f9c61
@@ -1674,7 +1729,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.5.1/values-schema.json
     apiVersion: v2
     appVersion: v0.0.36-alpine-3-21
-    created: "2026-09-29T17:00:51.969681602Z"
+    created: "2026-10-05T16:42:23.975220182Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: 5b21f7b40e543eb8bde6c8bc6a1aea3a06abf34c40f8bcccca35908bd43b6ca2
@@ -1722,7 +1777,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.5.1/values-schema.json
     apiVersion: v2
     appVersion: v0.0.34-alpine-3-21
-    created: "2026-09-29T17:00:51.969075931Z"
+    created: "2026-10-05T16:42:23.973743475Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: 710ae57ab9f6a9c8f354bba84a74505225f4a6b62935a506f842efb256e0543e
@@ -1770,7 +1825,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.5.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.33-alpine-3-21
-    created: "2026-09-29T17:00:51.968490761Z"
+    created: "2026-10-05T16:42:23.973055131Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: ba0d86c2be0ca2096c62d68d7ef027a1190faff43f371935072363cb9ea8ce1c
@@ -1816,7 +1871,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.4.4/values-schema.json
     apiVersion: v2
     appVersion: v0.0.25
-    created: "2026-09-29T17:00:51.967897709Z"
+    created: "2026-10-05T16:42:23.972339473Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: 340b8ac6c5a794822f9c8961c22ae6b24ac676236d70f63727ef0fb4dd910a02
@@ -1862,7 +1917,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.4.3/values-schema.json
     apiVersion: v2
     appVersion: v0.0.24
-    created: "2026-09-29T17:00:51.967310566Z"
+    created: "2026-10-05T16:42:23.971627768Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: ba8ceab19ab8c8787dac727d5eb448ca99e2c7883da2b43109dadf045fb58545
@@ -1908,7 +1963,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.4.2/values-schema.json
     apiVersion: v2
     appVersion: v0.0.24
-    created: "2026-09-29T17:00:51.966738506Z"
+    created: "2026-10-05T16:42:23.970882106Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: 0ec26b1151ffbb4fd5c5959ab0462d444c4bca017d7bb51304ccaeb59bee020e
@@ -1954,7 +2009,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.4.1/values-schema.json
     apiVersion: v2
     appVersion: v0.0.23
-    created: "2026-09-29T17:00:51.966176881Z"
+    created: "2026-10-05T16:42:23.970211127Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: 742b54964bb1cfacfd674a0777a36c003381f2fab6a5a3c680c6d66f9948a104
@@ -2000,7 +2055,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.4.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.22
-    created: "2026-09-29T17:00:51.96561146Z"
+    created: "2026-10-05T16:42:23.969575279Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: e128717b2b5a2886f16f005c3ad80529d2998064d3df26472582b7487def3642
@@ -2046,7 +2101,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.3.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.21
-    created: "2026-09-29T17:00:51.964828235Z"
+    created: "2026-10-05T16:42:23.968948537Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: 37634b54911e86d112d43a40c753e6e016f0f457483e7efb2587f0986add0d57
@@ -2092,7 +2147,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.2.1/values-schema.json
     apiVersion: v2
     appVersion: v0.0.21
-    created: "2026-09-29T17:00:51.964164278Z"
+    created: "2026-10-05T16:42:23.968284714Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: 885ade1a047e3da21bf37c9ce0820f708dc503fdaf41a1cee1802459a7aa3203
@@ -2138,7 +2193,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.2.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.20
-    created: "2026-09-29T17:00:51.963682712Z"
+    created: "2026-10-05T16:42:23.966994252Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: b445f438bee59c40381715994701486ce0b7d7060edbcf3213bbac2117623707
@@ -2184,7 +2239,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.1.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.18
-    created: "2026-09-29T17:00:51.962250933Z"
+    created: "2026-10-05T16:42:23.964568905Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: cfb11a47933611ed941b1cf2d2bd090c941f2c6aad84aa23e8edbb8d96d1e594
@@ -2230,7 +2285,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/dumpscript/1.0.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.11
-    created: "2026-09-29T17:00:51.961771531Z"
+    created: "2026-10-05T16:42:23.964110631Z"
     description: The DumpScript is a unified system for backup and restore of MySQL
       and PostgreSQL databases to Amazon S3.
     digest: 5c9447122e8f4ba42f4238a2ad3a90868ec4dcc7292a6db23ca3edc4db22c83e
@@ -2277,7 +2332,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/k8s-monitoring-app/1.0.0/values-schema.json
     apiVersion: v2
     appVersion: v0.0.25
-    created: "2026-09-29T17:00:51.977480758Z"
+    created: "2026-10-05T16:42:23.983966112Z"
     description: The K8s Monitoring App is a unified system for monitoring and alerting
       of Kubernetes clusters.
     digest: a5e46909185a08ba670af4a02b4cef2dde78563cdcf12c7bc55a91fd85a64ecb
@@ -2329,7 +2384,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/helm-charts/opsscript-agent/1.2.1/values.schema.json
     apiVersion: v2
     appVersion: v1.1.1
-    created: "2026-09-29T17:00:51.983894975Z"
+    created: "2026-10-05T16:42:23.99048209Z"
     description: The OpsScript Kubernetes Agent runs inside the client's Kubernetes
       cluster, collects data from configured integrations (Elasticsearch, Kubernetes,
       Alertmanager webhooks) and ships it to the OpsScript platform, where alerts
@@ -2379,7 +2434,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/helm-charts/opsscript-agent/1.2.0/values.schema.json
     apiVersion: v2
     appVersion: v1.1.1
-    created: "2026-09-29T17:00:51.983155165Z"
+    created: "2026-10-05T16:42:23.989537863Z"
     description: The OpsScript Kubernetes Agent runs inside the client's Kubernetes
       cluster, collects data from configured integrations (Elasticsearch, Kubernetes,
       Alertmanager webhooks) and ships it to the OpsScript platform, where alerts
@@ -2427,7 +2482,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/helm-charts/opsscript-agent/1.1.0/values.schema.json
     apiVersion: v2
     appVersion: v1.0.5
-    created: "2026-09-29T17:00:51.982413662Z"
+    created: "2026-10-05T16:42:23.987917946Z"
     description: The OpsScript Kubernetes Agent runs inside the client's Kubernetes
       cluster, collects data from configured integrations (Elasticsearch, Kubernetes,
       Alertmanager webhooks) and ships it to the OpsScript platform, where alerts
@@ -2475,7 +2530,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/helm-charts/opsscript-agent/1.0.5/values.schema.json
     apiVersion: v2
     appVersion: v1.0.4
-    created: "2026-09-29T17:00:51.981775624Z"
+    created: "2026-10-05T16:42:23.987146117Z"
     description: The OpsScript Kubernetes Agent runs inside the client's Kubernetes
       cluster, collects data from configured integrations (Elasticsearch, Kubernetes,
       Alertmanager webhooks) and ships it to the OpsScript platform, where alerts
@@ -2521,7 +2576,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/helm-charts/opsscript-agent/1.0.3/values.schema.json
     apiVersion: v2
     appVersion: v1.0.3
-    created: "2026-09-29T17:00:51.980835376Z"
+    created: "2026-10-05T16:42:23.986484894Z"
     description: The OpsScript Kubernetes Agent runs inside the client's Kubernetes
       cluster, collects data from configured integrations (Elasticsearch, Kubernetes,
       Alertmanager webhooks) and ships it to the OpsScript platform, where alerts
@@ -2567,7 +2622,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/helm-charts/opsscript-agent/1.0.3/values.schema.json
     apiVersion: v2
     appVersion: v1.0.3
-    created: "2026-09-29T17:00:51.980227902Z"
+    created: "2026-10-05T16:42:23.985828215Z"
     description: The OpsScript Kubernetes Agent runs inside the client's Kubernetes
       cluster, collects data from configured integrations (Elasticsearch, Kubernetes,
       Alertmanager webhooks) and ships it to the OpsScript platform, where alerts
@@ -2613,7 +2668,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/helm-charts/opsscript-agent/1.0.2/values.schema.json
     apiVersion: v2
     appVersion: v1.0.2
-    created: "2026-09-29T17:00:51.979638616Z"
+    created: "2026-10-05T16:42:23.9851697Z"
     description: The OpsScript Kubernetes Agent runs inside the client's Kubernetes
       cluster, collects data from configured integrations (Elasticsearch, Kubernetes,
       Alertmanager webhooks) and ships it to the OpsScript platform, where alerts
@@ -2659,7 +2714,7 @@ entries:
       artifacthub.io/valuesSchema: https://charts.cloudscript.com.br/helm-charts/opsscript-agent/1.0.1/values.schema.json
     apiVersion: v2
     appVersion: v1.0.1
-    created: "2026-09-29T17:00:51.977976164Z"
+    created: "2026-10-05T16:42:23.984561163Z"
     description: The OpsScript Kubernetes Agent runs inside the client's Kubernetes
       cluster, collects data from configured integrations (Elasticsearch, Kubernetes,
       Alertmanager webhooks) and ships it to the OpsScript platform, where alerts
@@ -2686,4 +2741,4 @@ entries:
     urls:
     - helm-charts/opsscript-agent/1.0.1/opsscript-agent-1.0.1.tgz
     version: 1.0.1
-generated: "2026-09-29T17:00:51.940031317Z"
+generated: "2026-10-05T16:42:23.940254997Z"
