@@ -2,6 +2,23 @@
   "name": "e2memory",
   "versions": [
     {
+      "version": "v0.0.9",
+      "published_at": "2026-10-14T12:21:36Z",
+      "files": [
+        "checksums.txt",
+        "checksums.txt.pem",
+        "checksums.txt.sig",
+        "e2memory_0.0.9_darwin_amd64.tar.gz",
+        "e2memory_0.0.9_darwin_amd64.tar.gz.sbom.json",
+        "e2memory_0.0.9_darwin_arm64.tar.gz",
+        "e2memory_0.0.9_darwin_arm64.tar.gz.sbom.json",
+        "e2memory_0.0.9_linux_amd64.tar.gz",
+        "e2memory_0.0.9_linux_amd64.tar.gz.sbom.json",
+        "e2memory_0.0.9_linux_arm64.tar.gz",
+        "e2memory_0.0.9_linux_arm64.tar.gz.sbom.json"
+      ]
+    },
+    {
       "version": "v0.0.8",
       "published_at": "2026-10-08T22:05:47Z",
       "files": [
@@ -87,5 +104,5 @@
       ]
     }
   ],
-  "latest": "v0.0.8"
+  "latest": "v0.0.9"
 }
